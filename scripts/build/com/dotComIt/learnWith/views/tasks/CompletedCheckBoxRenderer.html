@@ -1,0 +1,7 @@
+<div class="ngSelectionCell">
+    <input class="ngSelectionCheckbox" type="checkbox"
+           ng-checked="row.entity.completed"
+           ng-click="grid.appScope.onCompletedCheckBoxChange(row.entity)"
+           ng-disabled="grid.appScope.userModelWrapper.userModel.isUserInRole(grid.appScope.userModelWrapper.userModel.CREATOR_ROLE)"
+    />
+</div>
