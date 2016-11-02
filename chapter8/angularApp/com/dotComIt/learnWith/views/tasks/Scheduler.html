@@ -1,0 +1,28 @@
+<h1>Scheduler</h1>
+
+<p class="input-group datePicker">
+    <input type="text" class="form-control"
+           uib-datepicker-popup="MM/dd/yyyy"
+           ng-model="scheduler.schedulerDate"
+           is-open="currentDateProperties.opened"
+           datepicker-options="dateOptions"
+           close-text="Close"
+           ng-change="onSchedulerDateChange()"
+    />
+    <span class="input-group-btn">
+        <button type="button" class="btn btn-default"
+                ng-click="openDatePicker(currentDateProperties)"><i class="glyphicon glyphicon-calendar"></i></button>
+    </span>
+</p>
+
+<div class="border-top-left-bottom-right">
+    <div ng-repeat="task in taskModelWrapper.taskModel.scheduledTasks" class="width100">
+        <div class="horizontal-layout-94">{{task.description}}</div>
+        <div class="horizontal-layout-4">
+            <button ng-click="onTaskUnschedule(task)">X</button>
+        </div>
+    </div>
+
+</div>
+
+<button class="width100" ng-click="onTaskListSchedule()">Save</button>
