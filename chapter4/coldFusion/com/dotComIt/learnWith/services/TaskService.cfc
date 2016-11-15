@@ -93,9 +93,16 @@
             <cfset local.tempObject['userID'] = dataQuery.userID />
             <cfset local.tempObject['description'] = dataQuery.description />
             <cfset local.tempObject['completed'] = dataQuery.completed />
-            <cfset local.tempObject['dateCreated'] = dateFormat(dataQuery.dateCreated,"mm/dd/yyyy") />
-            <cfset local.tempObject['dateCompleted'] = dateFormat(dataQuery.dateCompleted,"mm/dd/yyyy") />
-            <cfset local.tempObject['dateScheduled'] = dateFormat(dataQuery.dateScheduled,"mm/dd/yyyy") />
+            <cfif isDate(dataQuery.dateCreated)>
+                <cfset local.tempObject['dateCreated'] = dateFormat(dataQuery.dateCreated,"mm/dd/yyyy") />
+            </cfif>
+            <cfif isDate(dataQuery.dateCompleted)>
+                <cfset local.tempObject['dateCompleted'] = dateFormat(dataQuery.dateCompleted,"mm/dd/yyyy") />
+            </cfif>
+            <cfif isDate(dataQuery.dateScheduled)>
+                <cfset local.tempObject['dateScheduled'] = dateFormat(dataQuery.dateScheduled,"mm/dd/yyyy") />
+            </cfif>
+            <cfset arrayAppend(local.results,local.tempObject)/>
             <cfset arrayAppend(local.results,local.tempObject)/>
             <cfset local.resultObject['error'] = 0/>
         </Cfoutput>

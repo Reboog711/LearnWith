@@ -2,7 +2,7 @@
 
     <cffunction name="authenticate" returnformat="plain" access="remote"
             output="true"
-            hint="I authenticate the user for the LifeAFterFlex test app" >
+            hint="I authenticate the user for the LearnWith test app" >
         <cfargument name="username" type="string" required="true" />
         <cfargument name="password" type="string" required="true" hint="I am the hashed password" />
 

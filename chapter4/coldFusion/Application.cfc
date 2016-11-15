@@ -10,7 +10,7 @@
     </cfscript>
 
     <cffunction name="onApplicationStart" returntype="boolean" output="true">
-        <cfset application.dsn = "LifeAfterFlex">
+        <cfset application.dsn = "LearnWithApp">
         <cfset application.debugMode = 0>
         <cfset application.componentPrefix = "chapter4.coldFusion.">
         <cfreturn true>
@@ -32,7 +32,7 @@
         <cfset var to="jeffry@dot-com-it.com">
         <cfset var from="jeffry@dot-com-it.com">
         <cfmail to="#to#" from="#from#" replyto="#from#"
-                subject="Life After Flex Error #cgi.HTTP_HOST#" type="html">
+                subject="Learn With Error #cgi.HTTP_HOST#" type="html">
             Error Date: #now()#<Br/><br/>
         Exception:
             <cfdump var="#arguments.exception#">
