@@ -331,24 +331,27 @@ angular.module('learnWith').controller('MainScreenCtrl', ['$scope','$location','
     }
 
     $scope.onCompletedCheckBoxChange = function onCompletedCheckBoxChange (task){
-        TaskService.completeTask(task,onTaskCompletedSuccess,onTaskCompletedError);
+        TaskService.completeTask(task).then(onTaskCompletedSuccess,onTaskCompletedError);
     }
-    function onTaskCompletedError(data, status,headers, config){
-        alert(data);
+    function onTaskCompletedError(response){
+        alert(response.data);
     }
-    function onTaskCompletedSuccess(data, status,headers, config){
-        if(data.error == 1){
+    function onTaskCompletedSuccess(response){
+        console.log('onTaskCompletedSuccess');
+        if(response.data.error == 1){
             alert("We could not load the task data");
             return;
         }
-        replaceTask($scope.tasksModel.tasksModel.tasks,data.resultObject[0])
+        replaceTask($scope.taskModelWrapper.taskModel.tasks,response.data.resultObject[0])
     }
 
 
     function onInit (){
         if(!UserModel.validateUser()){
+            console.log('redirect to login in controller')
             $location.path( "/login" );
         } else {
+            console.log('load tasks in controller')
             loadTasks($scope.taskModelWrapper.taskModel.taskFilter, onTaskLoadSuccess, onTaskLoadError);
             loadTaskCategories();
         }

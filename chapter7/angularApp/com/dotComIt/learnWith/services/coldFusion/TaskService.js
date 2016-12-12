@@ -87,7 +87,7 @@ angular.module('learnWith').service('TaskService', ['$http','$filter','SharedUti
             taskID : task.taskID,
             completed : !task.completed
         }
-        $http.post(servicePrefix + '/com/dotComIt/learnWith/services/TaskService.cfc', parameters )
+        return $http.post(servicePrefix + '/com/dotComIt/learnWith/services/TaskService.cfc', parameters )
     }
 
 

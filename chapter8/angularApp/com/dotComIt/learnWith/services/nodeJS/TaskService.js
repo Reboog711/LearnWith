@@ -78,7 +78,7 @@ angular.module('learnWith').service('TaskService', ['$http','SharedUtils','$filt
         parameters +=   "completed" + "=" + !task.completed+ '&';
         parameters +=   "callback" + "=" + "JSON_CALLBACK" ;
         var url = server + 'taskService/completeTask?' + parameters;
-        $http.jsonp(url);
+        return $http.jsonp(url);
     };
 
 

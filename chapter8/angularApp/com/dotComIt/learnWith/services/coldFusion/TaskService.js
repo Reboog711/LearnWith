@@ -31,7 +31,7 @@ angular.module('learnWith').service('TaskService', ['$http','$filter','SharedUti
         var parameters = {
             method : "getTaskCategories"
         };
-        return $http.post(servicePrefix + '/com/dotComIt/learnWith/services/TaskService.cfc', parameters )
+        return $http.post(servicePrefix + 'com/dotComIt/learnWith/services/TaskService.cfc', parameters )
     };
 
     function updateTask(taskVO, user){
@@ -50,7 +50,7 @@ angular.module('learnWith').service('TaskService', ['$http','$filter','SharedUti
             userID : user.userID
         }
 
-        return $http.post(servicePrefix + '/com/dotComIt/learnWith/services/TaskService.cfc', parameters )
+        return $http.post(servicePrefix + 'com/dotComIt/learnWith/services/TaskService.cfc', parameters )
 
     }
 
@@ -62,7 +62,7 @@ angular.module('learnWith').service('TaskService', ['$http','$filter','SharedUti
         if(task.dateScheduled){
             parameters.dateScheduled = task.dateScheduled
         }
-        return $http.post(servicePrefix + '/com/dotComIt/learnWith/services/TaskService.cfc',
+        return $http.post(servicePrefix + 'com/dotComIt/learnWith/services/TaskService.cfc',
             parameters )
     };
 
@@ -77,7 +77,7 @@ angular.module('learnWith').service('TaskService', ['$http','$filter','SharedUti
             taskIDList : taskIDList,
             dateScheduled : $filter('date')(schedulerDate, 'shortDate')
         }
-        return $http.post(servicePrefix + '/com/dotComIt/learnWith/services/TaskService.cfc',
+        return $http.post(servicePrefix + 'com/dotComIt/learnWith/services/TaskService.cfc',
             parameters )
     };
 
@@ -87,7 +87,7 @@ angular.module('learnWith').service('TaskService', ['$http','$filter','SharedUti
             taskID : task.taskID,
             completed : !task.completed
         }
-        $http.post(servicePrefix + '/com/dotComIt/learnWith/services/TaskService.cfc', parameters )
+        return $http.post(servicePrefix + 'com/dotComIt/learnWith/services/TaskService.cfc', parameters )
     }
 
 

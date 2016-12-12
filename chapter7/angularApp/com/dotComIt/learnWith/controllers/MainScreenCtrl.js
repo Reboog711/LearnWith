@@ -316,7 +316,7 @@ angular.module('learnWith').controller('MainScreenCtrl', ['$scope','$location','
     }
 
     $scope.onCompletedCheckBoxChange = function onCompletedCheckBoxChange (task){
-        TaskService.completeTask(task,onTaskCompletedSuccess,onTaskCompletedError);
+        TaskService.completeTask(task).then(onTaskCompletedSuccess,onTaskCompletedError);
     }
     function onTaskCompletedError(response){
         alert(response.data);
