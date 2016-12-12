@@ -23,6 +23,9 @@ var runSequence = require('run-sequence');
 // npm install --save-dev gulp-if
 var gulpIf = require('gulp-if');
 
+// npm install --save-dev karma
+var karma = require('karma');
+
 
 var sourceRoot = '../chapter8/angularApp/';
 // JavaScript include all files for the mock services but ignore the coldFusion or nodeJS services
@@ -142,6 +145,49 @@ gulp.task('buildProd', function(){
 });
 
 
+/**
+ * Run test once and exit
+ */
+var testRoot = '../chapter8/tests/angularApp/';
+var defaultSource = sourceRoot + 'com/dotComIt/learnWith/services/mock/**/*.js';
+var defaultTestSource = testRoot + 'com/dotComIt/learnWith/services/mock/**/*.js';
+var CFSource = sourceRoot + 'com/dotComIt/learnWith/services/coldFusion/**/*.js';
+var CFTestSource = testRoot + 'com/dotComIt/learnWith/services/coldFusion/**/*.js';
+var NodeJSSource = sourceRoot + 'com/dotComIt/learnWith/services/nodeJS/**/*.js';
+var NodeJSTestSource = testRoot + 'com/dotComIt/learnWith/services/nodeJS/**/*.js';
+
+gulp.task('test', function () {
+    var dirsToExclude = [CFSource,CFTestSource,NodeJSSource,NodeJSTestSource]
+    new karma.Server({
+        configFile: __dirname + '/karma.conf.js',
+        // can add other elements here; probably
+        // do the exclude values so I Can easily create
+        // different sets of services tests
+        exclude : dirsToExclude
+    }).start(gulp);
+});
+
+gulp.task('testColdFusion', function () {
+    var dirsToExclude = [defaultSource,defaultTestSource,NodeJSSource,NodeJSTestSource]
+    new karma.Server({
+        configFile: __dirname + '/karma.conf.js',
+        // can add other elements here; probably
+        // do the exclude values so I Can easily create
+        // different sets of services tests
+        exclude : dirsToExclude
+    }).start(gulp);
+});
+
+gulp.task('testNodeJS', function () {
+    var dirsToExclude = [defaultSource,defaultTestSource,CFSource,CFTestSource]
+    new karma.Server({
+        configFile: __dirname + '/karma.conf.js',
+        // can add other elements here; probably
+        // do the exclude values so I Can easily create
+        // different sets of services tests
+        exclude : dirsToExclude
+    }).start(gulp);
+});
 
 gulp.task('default', function() {
     console.log('do something');
