@@ -1,6 +1,6 @@
 # LearnWith
 
-This archive contains the code for the [LearnWith](http://www.dot-com-it.com) Training Series which focuses on building 
+This archive contains the code for the [LearnWith](http://www.learn-with.com) Training Series which focuses on building 
 the same application over and over using different technologies each time.  
 
 All books share the same code base; but each chapter has it's own code archive.
