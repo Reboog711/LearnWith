@@ -101,7 +101,6 @@
                 <cfset local.tempObject['dateScheduled'] = dateFormat(dataQuery.dateScheduled,"mm/dd/yyyy") />
             </cfif>
             <cfset arrayAppend(local.results,local.tempObject)/>
-            <cfset arrayAppend(local.results,local.tempObject)/>
             <cfset local.resultObject['error'] = 0/>
         </Cfoutput>
 
