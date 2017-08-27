@@ -1,0 +1,34 @@
+<h1>Login View</h1>
+<table>
+    <tr *ngIf="loginError">
+        <td colspan="3">
+            <div class="alert alert-danger  ">
+                <h2>
+                    {{loginError}}
+                </h2>
+            </div>
+        </td>
+    </tr>
+    <tr>
+        <td>Username</td>
+        <td><input type="text" [(ngModel)]="username"> </td>
+        <td class="error">{{usernameError}}</td>
+    </tr>
+    <tr>
+        <td>Password</td>
+        <td><input type="password" [(ngModel)]="password"> </td>
+        <td class="error">{{passwordError}}</td>
+    </tr>
+    <tr>
+        <td colspan="2">
+            <input type="button" value="Reset" (click)="onReset()"/>
+            <input type="button" value="Login" (click)="onLogin()" />
+        </td>
+    </tr>
+    <tr>
+        <td colspan="2">
+            <input type="button" value="Login as Tasker" (click)="onLoginAsMe()"/>
+            <input type="button" value="Login as Creator" (click)="onLoginAsWife()" />
+        </td>
+    </tr>
+</table>
