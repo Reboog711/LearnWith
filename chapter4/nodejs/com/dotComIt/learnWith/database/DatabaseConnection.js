@@ -15,7 +15,7 @@ var config = {
 var executeQuery  = function(query, resultHandler, failureHandler){
     console.log('in execute query');
 
-    var connection = new sql.Connection(config);
+    var connection = new sql.ConnectionPool(config);
     connection.connect(function(){
         console.log('connected')
         new sql.Request(connection).query(query).then(resultHandler).catch(failureHandler);

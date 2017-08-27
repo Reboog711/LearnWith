@@ -91,26 +91,28 @@ function getFilteredTasks(response, queryString) {
         console.log(query);
 
         var dataQuery = databaseConnection.executeQuery(query,
-            function(recordset) {
+            function(result) {
                 // Process Query Results here
+                console.log(result);
                 resultObject.error = 0;
-                for (var x=0;x < recordset.length ; x++ ){
-                    recordset[x].dateCreated =dateFormatter(recordset[x].dateCreated, "mm/dd/yyyy");
-                    if(recordset[x].dateCompleted){
-                        recordset[x].dateCompleted =dateFormatter(recordset[x].dateCompleted, "mm/dd/yyyy");
+                for (var x=0;x < result.recordset.length ; x++ ){
+                    result.recordset[x].dateCreated =dateFormatter(result.recordset[x].dateCreated, "mm/dd/yyyy");
+                    if(result.recordset[x].dateCompleted){
+                        result.recordset[x].dateCompleted =dateFormatter(result.recordset[x].dateCompleted, "mm/dd/yyyy");
                     } else {
-                        recordset[x].dateCompleted = '';
+                        result.recordset[x].dateCompleted = '';
                     }
-                    if(recordset[x].dateScheduled){
-                        recordset[x].dateScheduled.setDate(recordset[x].dateScheduled.getDate() + 1);
-                        recordset[x].dateScheduled =dateFormatter(recordset[x].dateScheduled, "mm/dd/yyyy");
+                    if(result.recordset[x].dateScheduled){
+                        result.recordset[x].dateScheduled.setDate(result.recordset[x].dateScheduled.getDate() + 1);
+                        result.recordset[x].dateScheduled =dateFormatter(result.recordset[x].dateScheduled, "mm/dd/yyyy");
                     } else {
-                        recordset[x].dateScheduled = '';
+                        result.recordset[x].dateScheduled = '';
                     }
                 }
 
-                resultObject.resultObject = recordset;
+                resultObject.resultObject = result.recordset;
                 responseHandler.execute(response, resultObject, callback);
+
             },
             function(err){
                 // process error results here
@@ -135,11 +137,11 @@ function getTaskCategories(response, queryString) {
     var query = "select * from taskCategories order by taskCategory";
 
     var dataQuery = databaseConnection.executeQuery(query,
-        function(recordset) {
+        function(result) {
             // query result function here
-            recordset.unshift({taskCategoryID:0,taskCategory:"All Categories"});
+            result.recordset.unshift({taskCategoryID:0,taskCategory:"All Categories"});
             resultObject.error = 0;
-            resultObject.resultObject = recordset;
+            resultObject.resultObject = result.recordset;
             responseHandler.execute(response, resultObject, callback);
         },
         function(err) {

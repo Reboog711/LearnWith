@@ -23,15 +23,15 @@ function login(response, queryString) {
 
         console.log(query);
         var dataQuery = databaseConnection.executeQuery(query,
-            function(recordset) {
+            function(result) {
                 console.log('AuthenticationServiceExecuteResultHandler')
-                console.log(recordset);
-                if(recordset.length == 1){
+                console.log(result);
+                if(result.recordset.length == 1){
                     resultObject.error = 0;
                     resultObject.resultObject = {};
-                    resultObject.resultObject.userID = recordset[0].userID;
-                    resultObject.resultObject.username = recordset[0].userName;
-                    resultObject.resultObject.role = recordset[0].roleID;
+                    resultObject.resultObject.userID = result.recordset[0].userID;
+                    resultObject.resultObject.username = result.recordset[0].userName;
+                    resultObject.resultObject.role = result.recordset[0].roleID;
                 } else {
                     resultObject.error = 1;
                 }
