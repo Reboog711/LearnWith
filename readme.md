@@ -12,12 +12,12 @@ If you read the book that covers:
     * Look at the **angular4App** directory for the Angular 4 UI code.
     * UI Mock Services are located at **angular4App/src/com/dotComIt/learnWith/services/mock**
     * The main index page of this app is **index.html**.
-* AngularJS With NodeJS Services: 
+* Angular 4 With NodeJS Services: 
     * Look at the **angular4App** directory for the Angular 4 UI code.
     * UI Mock Services are located at **angular4App/src/com/dotComIt/learnWith/services/nodeJS**
     * The main index page of this app is **index_nodejs.html**.
     * Look at the **nodejs** directory for the server side code.
-* AngularJS with ColdFusion Services: 
+* Angular 4 with ColdFusion Services: 
     * Look at the **angular4App** directory for the Angular 4 UI code.
     * UI Mock Services are located at **angular4App/src/com/dotComIt/learnWith/services/coldfusion**
     * The main index page of this app is **index_coldfusion.html**.
