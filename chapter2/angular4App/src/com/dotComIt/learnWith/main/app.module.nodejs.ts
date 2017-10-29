@@ -14,7 +14,7 @@ import { JsonpModule }    from '@angular/http';
 import { FormsModule }   from '@angular/forms';
 import {UserModel} from "../model/usermodel";
 import {AuthenticationService} from "../services/mock/authentication.service";
-import {AuthenticationServiceNodeJS} from "../services/nodejs/authentication.service";
+import {AuthenticationServiceNodeJS} from "../services/nodeJS/authentication.service";
 
 
 

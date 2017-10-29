@@ -14,11 +14,11 @@ import { JsonpModule }    from '@angular/http';
 import { FormsModule }   from '@angular/forms';
 import {UserModel} from "../model/usermodel";
 import {AuthenticationService} from "../services/mock/authentication.service";
-import {AuthenticationServiceNodeJS} from "../services/nodejs/authentication.service";
+import {AuthenticationServiceNodeJS} from "../services/nodeJS/authentication.service";
 
 // chapter 3
 import {TaskService} from "../services/mock/task.service";
-import {TaskServiceNodeJS} from "../services/nodejs/task.service";
+import {TaskServiceNodeJS} from "../services/nodeJS/task.service";
 import {TaskModel} from "../model/taskmodel";
 import {TaskGrid} from "../views/tasks/taskgrid.component";
 import {NgxDatatableModule} from "@swimlane/ngx-datatable";
