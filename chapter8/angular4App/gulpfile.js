@@ -40,6 +40,9 @@ var cleanCSS = require("gulp-clean-css");
 // installed w/ npm install --save-dev gulp-concat
 var concat = require('gulp-concat');
 
+// installed for running unit tests
+var karma = require("karma");
+
 
 // Lint all custom TypeScript files.
 gulp.task('tslint', function() {
@@ -58,6 +61,8 @@ gulp.task("buildTS", ["tslint"], function() {
         .pipe(gulpIf(config.devMode,sourcemaps.init()))
         .pipe(tsProject());
     return tsResult.js
+        // warning reminder; if you use uglify() than the source maps are wrong
+        // https://stackoverflow.com/questions/38366001/typescript-sourcemaps-wrong-after-gulp-uglify
         .pipe(uglify())
         .pipe(gulpIf(config.devMode,sourcemaps.write(config.mapPath)))
         .pipe(gulp.dest(config.destinationPath));
@@ -155,4 +160,39 @@ gulp.task('buildWatch', ['build'], function(){
         console.log('File Path' + event.path);
     });
 
+});
+
+
+gulp.task("test", function () {
+    new karma.Server({
+        configFile: __dirname + "/karma.conf.js",
+        files : config.testFilePatterns,
+        proxies: {
+            "/com/" : "/" + config.testWebRoot + config.sourceRoot + config.codeRoot,
+        },
+        exclude : config.defaultDirsToExclude,
+    }).start();
+});
+
+gulp.task("testColdFusion", function () {
+    new karma.Server({
+        configFile: __dirname + "/karma.conf.js",
+        files : config.testFilePatterns,
+        proxies: {
+            "/com/" : "/" + config.testWebRoot + config.sourceRoot + config.codeRoot,
+            "/img/" : "/" + config.testWebRoot + config.sourceRoot + "img",
+        },
+        exclude : config.CFDirsToExclude,
+    }).start();
+});
+
+gulp.task("testNodeJS", function () {
+    new karma.Server({
+        configFile: __dirname + "/karma.conf.js",
+        files : config.testFilePatterns,
+        proxies: {
+            "/com/" : "/" + config.testWebRoot + config.sourceRoot + config.codeRoot
+        },
+        exclude : config.NodeJSDirsToExclude,
+    }).start();
 });

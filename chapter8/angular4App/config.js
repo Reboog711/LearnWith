@@ -13,7 +13,14 @@ var baseDirs = {
     destinationPath : 'build',
 
     // The path for the source map files in build directory; they are kept external by default
-    mapPath : 'maps'
+    mapPath : 'maps',
+
+    // The root directory for all the tests
+    testRoot : "tests/",
+
+    // The root directory for all the tests
+    testWebRoot : "base/"
+
 
 };
 
@@ -22,9 +29,19 @@ var configObject = {
     // will find all TypeScript files in the sourceRoot directory, recursively
     typeScriptSource : [baseDirs.sourceRoot + "**/*.ts"],
 
+    // a variable that points to the typeScript test source location
+    // finds all the TypeScript files in the sourceRoot, recusrively
+    typeScriptTestSource : [baseDirs.testRoot + "**/*.ts"],
+
+
     //a variable that points to the HTML Source
     // will find all HTML Source files in the source root directory, recursively
     htmlSource : [baseDirs.sourceRoot + '**/*.html'],
+
+    // a variable that points to the HTML template files used by Angular components
+    // we assume all these will be under the com directory
+    // just used for unit testing since the above htmlSource variable will be used for most build scripts
+    htmlTemplateSource : [baseDirs.sourceRoot + baseDirs.codeRoot + '/**/*.html'],
 
     // The location of all JavaScript libraries stored in the source path
     // by default this just contains the systemJS Config used by Angular
@@ -69,6 +86,23 @@ var configObject = {
 
 };
 
+var testingDirsToIgnoreObject = {
+    mainApp : baseDirs.sourceRoot + baseDirs.codeRoot + '/dotComIt/learnWith/main/main*.ts',
+
+    defaultModule : baseDirs.sourceRoot + baseDirs.codeRoot + '/dotComIt/learnWith/main/app.module.*.ts',
+    defaultServicesSource : baseDirs.sourceRoot + baseDirs.codeRoot + '/dotComIt/learnWith/services/mock/**/*.ts',
+    defaultTestSource : baseDirs.testRoot + baseDirs.codeRoot + '/dotComIt/learnWith/services/mock/**/*.ts',
+
+    CFModule : baseDirs.sourceRoot + baseDirs.codeRoot + '/dotComIt/learnWith/main/app.module.coldfusion.ts',
+    CFServicesSource : baseDirs.sourceRoot + baseDirs.codeRoot + '/dotComIt/learnWith/services/coldfusion/**/*.ts',
+    CFTestSource : baseDirs.testRoot + baseDirs.codeRoot + '/dotComIt/learnWith/services/coldfusion/**/*.ts',
+
+    NodeJSModule : baseDirs.sourceRoot + baseDirs.codeRoot + '/dotComIt/learnWith/main/app.module.nodejs.ts',
+    NodeJSServicesSource : baseDirs.sourceRoot + baseDirs.codeRoot + '/dotComIt/learnWith/services/nodeJS/**/*.ts',
+    NodeJSTestSource : baseDirs.testRoot + baseDirs.codeRoot + '/dotComIt/learnWith/services/nodeJS/**/*.ts',
+
+};
+
 // these are values you probably won't want to change, but can
 var staticConfig = {
     // points to node_modules install
@@ -97,7 +131,34 @@ var staticConfig = {
 
     // variable to determine if source maps are used or not
     // by default true; but if we create a production build they are not generated
-    devMode : true
+    devMode : true,
+
+    // the patterns for all the test files
+    testFilePatterns : [
+        { pattern: baseDirs.testRoot + "base.test.ts" }, // new file not created yet
+        { pattern: configObject.typeScriptSource[0] }, // existed
+        { pattern: configObject.htmlTemplateSource[0] }, // new
+        { pattern: configObject.cssStyleURLsSource[0] }, // existed
+        { pattern: configObject.typeScriptTestSource[0] } // new
+    ],
+
+
+    defaultDirsToExclude : [
+        testingDirsToIgnoreObject.mainApp,
+        testingDirsToIgnoreObject.CFModule, testingDirsToIgnoreObject.CFServicesSource, testingDirsToIgnoreObject.CFTestSource,
+        testingDirsToIgnoreObject.NodeJSModule, testingDirsToIgnoreObject.NodeJSServicesSource, testingDirsToIgnoreObject.NodeJSTestSource
+    ],
+
+    CFDirsToExclude : [
+        testingDirsToIgnoreObject.mainApp,
+        testingDirsToIgnoreObject.defaultModule, /* testingDirsToIgnoreObject.defaultServicesSource, */ testingDirsToIgnoreObject.defaultTestSource,
+        testingDirsToIgnoreObject.NodeJSModule, testingDirsToIgnoreObject.NodeJSServicesSource, testingDirsToIgnoreObject.NodeJSTestSource
+    ],
+    NodeJSDirsToExclude : [
+        testingDirsToIgnoreObject.mainApp,
+        testingDirsToIgnoreObject.defaultModule, /* testingDirsToIgnoreObject.defaultServicesSource, */ testingDirsToIgnoreObject.defaultTestSource,
+        testingDirsToIgnoreObject.CFModule, testingDirsToIgnoreObject.CFServicesSource, testingDirsToIgnoreObject.CFTestSource,
+    ],
 
 };
 
