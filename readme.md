@@ -22,6 +22,12 @@ If you read the book that covers:
     * UI Mock Services are located at **angular4App/src/com/dotComIt/learnWith/services/coldfusion**
     * The main index page of this app is **index_coldfusion.html**.
     * Look at the **coldFusion** directory for the server side code.
+* Angular 4 Book about Build Processes and Unit Testing:
+   * The modified build Scripts that include testing are in **chapter8/angular4App**
+   * Scripts run against the Chapter8 directory
+   * Unit tests are located in **chapter8/angular4App/tests**
+   * Angular CLI samples are in **angularCLI**
+   * Pay whatever you want for this book at our [Gumroad Store](https://gumroad.com/l/LearnWithA4CA)
 * AngularJS with Mock Services: 
     * Look at the **angularApp** directory for the AngularJS UI code.
     * UI Mock Services are located at **angularApp/com/dotComIt/learnWith/services/mock**
