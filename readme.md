@@ -26,7 +26,7 @@ If you read the book that covers:
    * The modified build Scripts that include testing are in **chapter8/angular4App**
    * Scripts run against the Chapter8 directory
    * Unit tests are located in **chapter8/angular4App/tests**
-   * Angular CLI samples are in **angularCLI**
+   * Angular CLI samples are in **angularCLI/Angular4**
    * Pay whatever you want for this book at our [Gumroad Store](https://gumroad.com/l/LearnWithA4CA)
 * AngularJS with Mock Services: 
     * Look at the **angularApp** directory for the AngularJS UI code.
