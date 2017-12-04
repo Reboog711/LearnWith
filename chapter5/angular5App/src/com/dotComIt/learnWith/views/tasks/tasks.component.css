@@ -1,0 +1,14 @@
+.taskFilter{
+    width:100%;
+}
+
+.mainScreenContainer{
+    flex : 1;
+    padding-top : 5px;
+}
+
+.wrapper {
+    display: flex;
+    height: 100%;
+    flex-direction: column;
+}

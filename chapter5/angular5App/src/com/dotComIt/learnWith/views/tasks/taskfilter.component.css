@@ -1,0 +1,32 @@
+.taskFilterWrapper {
+    display: flex;
+    height: 100%;
+    flex-direction: column;
+}
+
+.datePicker {
+    width:175px;
+}
+.completedDropDown {
+    width:150px;
+}
+.taskCategoryDropDown {
+    width:150px;
+}
+
+.alignBottom {
+    vertical-align: bottom;
+}
+
+.taskFilterAlert {
+    padding: .2rem 1.25rem;
+}
+
+
+
+/* To remove bonus extra padding in filter bar
+    not covered in book
+ */
+td .form-inline, td .form-inline .form-group {
+    margin-bottom: 0;
+}

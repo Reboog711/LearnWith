@@ -1,0 +1,46 @@
+html {
+    height: 99%;
+    width: 100%;
+}
+body {
+    height: 100%;
+    width: 100%;
+    padding: 5px;
+}
+
+.error {
+    color: #ff0000;
+}
+
+table{
+    border-collapse: collapse;
+}
+td {
+    vertical-align: top;
+    padding:5px;
+}
+
+
+.border-top-left {
+    border-left: solid 2px grey;
+    border-top: solid 2px grey;
+}
+.border-top-right {
+    border-right : solid 2px grey;
+    border-top: solid 2px grey;
+}
+.border-bottom-right {
+    border-bottom: solid 1px grey;
+    border-right : solid 2px grey;
+}
+.border-bottom-left {
+    border-bottom: solid 1px grey;
+    border-left : solid 2px grey;
+}
+
+
+.datePickerImage {
+    width: 1.2rem;
+    height: 1rem;
+    cursor: pointer;
+}

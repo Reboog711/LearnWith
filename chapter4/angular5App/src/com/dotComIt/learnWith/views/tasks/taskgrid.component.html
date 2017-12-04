@@ -1,0 +1,36 @@
+<div class="taskGridWrapper">
+    <div class="alert alert-danger" *ngIf="taskLoadError">
+        <h2>{{taskLoadError}}</h2>
+    </div>
+    <div class="gridStyle">
+        <ngx-datatable #taskGrid
+                       class="material gridStyle"
+                       [rows]="tasks"
+                       [headerHeight]="50"
+                       [rowHeight]="50"
+                       [columnMode]="'force'"
+                       [scrollbarV]="'true'"
+        >
+            <ngx-datatable-column name="Completed" maxWidth="125">
+                <ng-template let-value="value" ngx-datatable-cell-template>
+                    <input type="checkbox" [checked]="value" />
+                </ng-template>
+            </ngx-datatable-column>
+            <ngx-datatable-column name="Description" minWidth="250">
+            </ngx-datatable-column>
+            <ngx-datatable-column name="Category" prop="taskCategory" >
+            </ngx-datatable-column>
+            <ngx-datatable-column name="Date Created" prop="dateCreated" >
+                <ng-template let-value="value" ngx-datatable-cell-template>
+                    {{value | date: 'shortDate'}}
+                </ng-template>
+            </ngx-datatable-column>
+            <ngx-datatable-column name="Date Scheduled" prop="dateScheduled"  >
+                <ng-template let-value="value" ngx-datatable-cell-template>
+                    {{value | date: 'shortDate'}}
+                </ng-template>
+            </ngx-datatable-column>
+
+        </ngx-datatable>
+    </div>
+</div>

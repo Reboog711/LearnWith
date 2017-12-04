@@ -1,12 +1,36 @@
 # LearnWith
 
 This archive contains the code for the [LearnWith](http://www.learn-with.com) Training Series which focuses on building 
-the same application over and over using different technologies each time.  
+the same application over and over using different technologies.  
 
-All books share a similar code base; but each chapter has it's own code archive.
+All books share a similar code base and each chapter has its own code archive.
 
 If you read the book that covers:
 
+# Angular 5
+
+* Angular 5 with Mock Services: 
+    * Look at the **angular5App** directory for the Angular 5 UI code.
+    * UI Mock Services are located at **angular5App/src/com/dotComIt/learnWith/services/mock**
+    * The main index page of this app is **index.html**.
+* Angular 5 With NodeJS Services: 
+    * Look at the **angular5App** directory for the Angular 4 UI code.
+    * UI Mock Services are located at **angular5App/src/com/dotComIt/learnWith/services/nodeJS**
+    * The main index page of this app is **index_nodejs.html**.
+    * Look at the **nodejs** directory for the server side code.
+* Angular 5 with ColdFusion Services: 
+    * Look at the **angular5App** directory for the Angular 4 UI code.
+    * UI Mock Services are located at **angular5App/src/com/dotComIt/learnWith/services/coldfusion**
+    * The main index page of this app is **index_coldfusion.html**.
+    * Look at the **coldFusion** directory for the server side code.
+* Angular 5 Book about Build Processes and Unit Testing:
+   * The modified build Scripts that include testing are in **chapter8/angular5App**
+   * Scripts run against the Chapter8 directory
+   * Unit tests are located in **chapter8/angular5App/tests**
+   * Angular CLI samples are in **angularCLI/Angular5**
+   * Pay whatever you want for this book at our [Gumroad Store](https://gumroad.com/l/LearnWithA5CA)
+
+# Angular 4
 
 * Angular 4 with Mock Services: 
     * Look at the **angular4App** directory for the Angular 4 UI code.
@@ -28,6 +52,9 @@ If you read the book that covers:
    * Unit tests are located in **chapter8/angular4App/tests**
    * Angular CLI samples are in **angularCLI/Angular4**
    * Pay whatever you want for this book at our [Gumroad Store](https://gumroad.com/l/LearnWithA4CA)
+
+# Angular JS
+
 * AngularJS with Mock Services: 
     * Look at the **angularApp** directory for the AngularJS UI code.
     * UI Mock Services are located at **angularApp/com/dotComIt/learnWith/services/mock**
@@ -47,7 +74,6 @@ If you read the book that covers:
    * Scripts run against the Chapter8 directory
    * Unit tests are located in **chapter8/tests/angularApp**
    * Pay whatever you want for this book at our [Gumroad Store](https://gumroad.com/l/LearnWithACA)
-
 
 
 [LearnWith](http://www.learn-with.com)
