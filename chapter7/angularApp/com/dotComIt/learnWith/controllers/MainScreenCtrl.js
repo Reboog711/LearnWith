@@ -326,7 +326,7 @@ angular.module('learnWith').controller('MainScreenCtrl', ['$scope','$location','
             alert("We could not load the task data");
             return;
         }
-        replaceTask($scope.tasksModel.tasksModel.tasks,response.data.resultObject[0])
+        replaceTask($scope.taskModelWrapper.taskModel.tasks,response.data.resultObject[0])
     }
 
 
