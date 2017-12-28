@@ -30,7 +30,7 @@ If you read the book that covers:
     * Look at the **coldFusion** directory for the server side code.
 * Angular 5 Book about Build Processes and Unit Testing:
    * The modified build Scripts that include testing are in **chapter8/angular5App**
-   * Scripts run against the Chapter8 directory
+   * Scripts run against the **Chapter8** directory
    * Unit tests are located in **chapter8/angular5App/tests**
    * Angular CLI samples are in **angularCLI/Angular5**
    * Pay whatever you want for this book at our [Gumroad Store](https://gumroad.com/l/LearnWithA5CA)
@@ -58,7 +58,7 @@ If you read the book that covers:
     * Look at the **coldFusion** directory for the server side code.
 * Angular 4 Book about Build Processes and Unit Testing:
    * The modified build Scripts that include testing are in **chapter8/angular4App**
-   * Scripts run against the Chapter8 directory
+   * Scripts run against the **Chapter8** directory
    * Unit tests are located in **chapter8/angular4App/tests**
    * Angular CLI samples are in **angularCLI/Angular4**
    * Pay whatever you want for this book at our [Gumroad Store](https://gumroad.com/l/LearnWithA4CA)
@@ -86,7 +86,7 @@ If you read the book that covers:
     * Look at the **coldFusion** directory for the server side code.
 * AngularJS Book about Build Processes and Unit Testing:
    * Source code for the build scripts is in **scripts**
-   * Scripts run against the Chapter8 directory
+   * Scripts run against the **Chapter8** directory
    * Unit tests are located in **chapter8/tests/angularApp**
    * Pay whatever you want for this book at our [Gumroad Store](https://gumroad.com/l/LearnWithACA)
 
