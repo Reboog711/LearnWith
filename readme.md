@@ -3,7 +3,8 @@
 This archive contains the code for the [LearnWith](http://www.learn-with.com) Training Series which focuses on building 
 the same application over and over using different technologies.  
 
-All books share a similar code base and each chapter has its own code archive.
+All books share a similar code base and each chapter has its own code archive.  
+[Go get the Books](http://www.learn-with.com)
 
 If you read the book that covers:
 
@@ -91,7 +92,7 @@ If you read the book that covers:
    * Pay whatever you want for this book at our [Gumroad Store](https://gumroad.com/l/LearnWithACA)
 
 
-[LearnWith](http://www.learn-with.com)
+[Go get the Books](http://www.learn-with.com)
 
 
 # Updates
