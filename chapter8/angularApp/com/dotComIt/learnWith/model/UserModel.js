@@ -18,7 +18,7 @@ angular.module('learnWith').service('UserModel', [function(){
     return userModel;
 
     function isUserInRole(roleToCompare){
-        if(userModel.user.role == roleToCompare){
+        if(userModel.user.roleID == roleToCompare){
             return true;
         }
         return false;

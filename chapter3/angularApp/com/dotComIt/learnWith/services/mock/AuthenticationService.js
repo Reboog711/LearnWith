@@ -16,9 +16,9 @@ angular.module('learnWith').service('AuthenticationService', ['$q','$timeout',fu
         $timeout(function() {
             var result = {};
             if((username == 'me') && (password == 'me')){
-                result.data= {"resultObject":{"role":1,"username":"me","userID":1},"error":0};
+                result.data= {"resultObject":{"roleID":1,"username":"me","userID":1},"error":0};
             } else if((username == 'wife') && (password == 'wife')){
-                result.data = {"resultObject":{"role":2,"username":"wife","userID":2},"error":0};
+                result.data = {"resultObject":{"roleID":2,"username":"wife","userID":2},"error":0};
             } else {
                 result.data = {"error":1};
             }

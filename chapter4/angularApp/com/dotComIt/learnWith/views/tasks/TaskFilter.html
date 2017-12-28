@@ -19,7 +19,7 @@
         </td>
         <td  class="border-bottom-right">
             <select ng-model="taskModelWrapper.taskModel.taskFilter.taskCategoryID"
-                    ng-options="item.taskCategoryID as item.taskCategory for item in taskModelWrapper.taskModel.taskCategories"
+                    ng-options="item.taskCategoryID as item.taskCategory for item in taskModelWrapper.taskModel.taskCategoriesForFilter"
                     class="taskCategoryDropDown">
             </select>
         </td>

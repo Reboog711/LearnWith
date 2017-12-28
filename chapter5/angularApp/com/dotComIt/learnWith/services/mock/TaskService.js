@@ -53,7 +53,6 @@ angular.module('learnWith').service('TaskService', ['$q','$timeout',function($q,
         $timeout(function() {
             var result = {};
             result.data = {"resultObject":[
-                {"taskCategoryID":0,"taskCategory":"All Categories"},
                 {"taskCategoryID":1,"taskCategory":"Business"},
                 {"taskCategoryID":2,"taskCategory":"Personal"}],
                 "error":false}

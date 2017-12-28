@@ -7,6 +7,7 @@ angular.module('learnWith').service('TaskModel', [function(){
         addedTasks : [],
         scheduledTasks : [],
         taskCategories : [],
+        taskCategoriesForFilter : [],
         taskCompletedOptions : [
             {"id":-1,"label":"All"},
             {"id":0,"label":"Open Tasks"},

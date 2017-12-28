@@ -118,6 +118,12 @@ angular.module('learnWith').controller('MainScreenCtrl', ['$scope','$location','
             return;
         }
         $scope.taskModelWrapper.taskModel.tasks = response.data.resultObject;
+        $scope.taskModelWrapper.taskModel.taskCategoriesForFilter = Object.assign( [], response.data.resultObject );
+        var allTask = {
+            taskCategoryID : 0,
+            taskCategory : "All Categories"
+        }
+        $scope.taskModelWrapper.taskModel.taskCategoriesForFilter.unshift(allTask);
     }
 
     function loadTaskCategories(){
