@@ -2,7 +2,7 @@
  * Created by jhouser on 5/12/2016.
  */
 
-angular.module('learnWith').service('TaskService', ['$http','$filter','SharedUtils',function($http,$filter,sharedUtils){
+angular.module('learnWith').service('TaskService', ['$http','$filter',function($http,$filter){
 
     var servicePrefix = '../php/'
 
