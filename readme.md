@@ -14,6 +14,11 @@ If you read the book that covers:
     * Look at the **angular5App** directory for the Angular 5 UI code.
     * UI Mock Services are located at **angular5App/src/com/dotComIt/learnWith/services/mock**
     * The main index page of this app is **index.html**.
+* Angular 5 With Java Services: 
+    * Look at the **angular5App** directory for the Angular 5 UI code.
+    * UI Services to access the Java server are located at **angular5App/src/com/dotComIt/learnWith/services/Java**
+    * The main index page of this app is **index_java.html**.
+    * Look at the **java** directory for the server side code.
 * Angular 5 With NodeJS Services: 
     * Look at the **angular5App** directory for the Angular 5 UI code.
     * UI Services to access the NodeJS server are located at **angular5App/src/com/dotComIt/learnWith/services/nodeJS**
@@ -42,6 +47,11 @@ If you read the book that covers:
     * Look at the **angular4App** directory for the Angular 4 UI code.
     * UI Mock Services are located at **angular4App/src/com/dotComIt/learnWith/services/mock**
     * The main index page of this app is **index.html**.
+* Angular 4 With Java Services: 
+    * Look at the **angular4App** directory for the Angular 4 UI code.
+    * UI Services to access the NodeJS server are located at **angular4App/src/com/dotComIt/learnWith/services/java**
+    * The main index page of this app is **index_java.html**.
+    * Look at the **java** directory for the server side code.
 * Angular 4 With NodeJS Services: 
     * Look at the **angular4App** directory for the Angular 4 UI code.
     * UI Services to access the NodeJS server are located at **angular4App/src/com/dotComIt/learnWith/services/nodeJS**
@@ -70,6 +80,11 @@ If you read the book that covers:
     * Look at the **angularApp** directory for the AngularJS UI code.
     * UI Mock Services are located at **angularApp/com/dotComIt/learnWith/services/mock**
     * The main index page of this app is **index.html**.
+* AngularJS With Java Services: 
+    * Look at the **angularApp** directory for the AngularJS UI code.
+    * UI Services to access the NodeJS server are located at **angularApp/com/dotComIt/learnWith/services/java**
+    * The main index page of this app is **index_java.html**.
+    * Look at the **java** directory for the server side code.
 * AngularJS With NodeJS Services: 
     * Look at the **angularApp** directory for the AngularJS UI code.
     * UI Services to access the NodeJS server are located at **angularApp/com/dotComIt/learnWith/services/nodeJS**
