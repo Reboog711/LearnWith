@@ -1,0 +1,31 @@
+<div class="taskSchedulerWrapper">
+    <h1>Scheduler</h1>
+    <div class="alert alert-danger" *ngIf="schedulerError">
+        <h2>
+            {{schedulerError}}
+        </h2>
+    </div>
+    <form class="form-inline">
+        <div class="form-group">
+            <div class="input-group">
+                <input class="form-control" placeholder="yyyy-mm-dd"
+                       name="schedulerDP" ngbDatepicker
+                       #schedulerDP="ngbDatepicker"
+                       [(ngModel)]="schedulerDate"
+                       (ngModelChange)="onScheduleDateChange()">
+                <div class="input-group-addon" (click)="schedulerDP.toggle()" >
+                    <img src="img/calendar-icon.svg" class="datePickerImage"/>
+                </div>
+            </div>
+        </div>
+    </form>
+    <div class="border-top-left-bottom-right">
+        <div *ngFor="let task of taskModel.scheduledTasks" class="width100">
+            <div class="horizontal-layout-94">{{task.description}}</div>
+            <div class="horizontal-layout-4">
+                <button (click)="onTaskUnschedule(task)">X</button>
+            </div>
+        </div>
+    </div>
+    <button class="width100" (click)="onTaskListSchedule()">Save</button>
+</div>

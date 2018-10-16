@@ -1,0 +1,54 @@
+html {
+    height: 99%;
+    width: 100%;
+}
+body {
+    height: 100%;
+    width: 100%;
+    padding: 5px;
+}
+
+.error {
+    color: #ff0000;
+}
+
+table{
+    border-collapse: collapse;
+}
+td {
+    vertical-align: top;
+    padding:5px;
+}
+.horizontal-layout-94{
+    position: relative;
+    display: inline-block;
+    vertical-align: top;
+    width:94%;
+    height : 100%;
+}
+.horizontal-layout-4{
+    display: inline-block;
+    vertical-align: top;
+    width:4%;
+    height:100%;
+}
+.horizontal-layout-60{
+    position: relative;
+    display: inline-block;
+    vertical-align: top;
+    width:60%;
+    height:100%;
+}
+.horizontal-layout-30{
+    position: relative;
+    display: inline-block;
+    vertical-align: top;
+    width:30%;
+    height:100%;
+}
+
+.datePickerImage {
+    width: 1.2rem;
+    height: 1rem;
+    cursor: pointer;
+}

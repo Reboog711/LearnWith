@@ -1,0 +1,11 @@
+.error {
+    color: #ff0000;
+}
+
+table{
+    border-collapse: collapse;
+}
+td {
+    vertical-align: top;
+    padding:5px;
+}

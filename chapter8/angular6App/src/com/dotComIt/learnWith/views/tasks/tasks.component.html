@@ -1,0 +1,19 @@
+<div class="wrapper">
+    <taskfilter class="taskFilter"
+                (filterRequest)="filterRequest($event)"
+                (newTaskRequest)="newTask()"></taskfilter>
+    <div class="mainScreenContainer">
+        <div [ngClass]="gridContainerStyle">
+            <taskgrid #taskgrid (editTaskRequest)="editTask($event)"></taskgrid>
+        </div>
+        <div class="horizontal-layout-4"
+             *ngIf="userModel.isUserInRole(userModel.TASKER_ROLE)">
+            <button class="height100" (click)="onToggleScheduler()" >
+                {{schedulerShowButtonLabel}}
+            </button>
+        </div>
+        <div class="horizontal-layout-30" [hidden]="!schedulerState">
+            <taskscheduler></taskscheduler>
+        </div>
+    </div>
+</div>

@@ -8,6 +8,41 @@ All books share a similar code base and each chapter has its own code archive.
 
 If you read the book that covers:
 
+# Angular 6
+
+* Angular 6 with Mock Services: 
+    * Look at the **angular6App** directory for the Angular 6 UI code.
+    * UI Mock Services are located at **angular6App/src/com/dotComIt/learnWith/services/mock**
+    * The main index page of this app is **index.html**.
+* Angular 6 With Java Services: 
+    * Look at the **angular6App** directory for the Angular 6 UI code.
+    * UI Services to access the Java server are located at **angular6App/src/com/dotComIt/learnWith/services/Java**
+    * The main index page of this app is **index_java.html**.
+    * Look at the **java** directory for the server side code.
+* Angular 6 With NodeJS Services: 
+    * Look at the **angular6App** directory for the Angular 6 UI code.
+    * UI Services to access the NodeJS server are located at **angular6App/src/com/dotComIt/learnWith/services/nodeJS**
+    * The main index page of this app is **index_nodejs.html**.
+    * Look at the **nodejs** directory for the server side code.
+* Angular 6 with PHP Services: 
+    * Look at the **angular6App** directory for the Angular 6 UI code.
+    * UI Services to access the PHP server are located at **angular6App/src/com/dotComIt/learnWith/services/php**
+    * The main index page of this app is **index_php.html**.
+    * Look at the **php** directory for the server side code.
+* Angular 6 with ColdFusion Services: 
+    * Look at the **angular6App** directory for the Angular 6 UI code.
+    * UI Services to access the ColdFusion server are located at **angular6App/src/com/dotComIt/learnWith/services/coldfusion**
+    * The main index page of this app is **index_coldfusion.html**.
+    * Look at the **coldFusion** directory for the server side code.
+* Angular 6 Book about Build Processes and Unit Testing:
+   * The modified build Scripts that include testing are in **chapter8/angular5App**
+   * Scripts run against the **Chapter8** directory
+   * Unit tests are located in **chapter8/angular6App/tests**
+   * Angular CLI samples are in **angularCLI/Angular6**
+   * Redux samples are in **Redux/Angular6**
+   * Pay whatever you want for this book at our [Gumroad Store](https://gumroad.com/l/LearnWithA6CA)
+
+
 # Angular 5
 
 * Angular 5 with Mock Services: 
