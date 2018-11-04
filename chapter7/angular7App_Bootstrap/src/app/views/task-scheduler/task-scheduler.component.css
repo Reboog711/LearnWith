@@ -1,0 +1,9 @@
+.taskSchedulerWrapper {
+  display: flex;
+  height: 100%;
+  flex-direction: column;
+}
+.width100 {
+  width:100%
+}
+

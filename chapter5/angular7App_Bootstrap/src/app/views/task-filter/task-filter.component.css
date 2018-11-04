@@ -1,0 +1,43 @@
+.taskFilterWrapper {
+  display: flex;
+  height: 100%;
+  flex-direction: column;
+}
+
+
+.taskFilterAlert {
+  padding: .2rem 1.25rem;
+}
+
+.datePicker {
+  width:175px;
+}
+.completedDropDown {
+  width:150px;
+}
+.taskCategoryDropDown {
+  width:150px;
+}
+
+.datePickerImage{
+  width: 1.2rem;
+  height: 1rem;
+  cursor: pointer;
+}
+
+.alignBottom {
+  vertical-align: bottom;
+}
+
+td.border-top{
+  border-top:solid 2px grey !important;
+}
+td.border-right{
+  border-right:solid 2px grey !important;;
+}
+td.border-bottom{
+  border-bottom:solid 2px grey !important;;
+}
+td.border-left{
+  border-left:solid 2px grey !important;;
+}
