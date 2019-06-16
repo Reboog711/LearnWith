@@ -8,6 +8,46 @@ All books share a similar code base and each chapter has its own code archive.
 
 If you read the book that covers:
 
+# Angular 8 with Bootstrap
+
+* Angular 8 with Mock Services: 
+    * Look at the **angular8App_Bootstrap** directory for the Angular 8 UI code.
+    * UI Mock Services are located at **angular8App_Bootstrap/src/app/services/mock**
+    * The main module of this app is **angular8App_Bootstrap/src/app/app.module.ts**.
+    * Run the Angular app using `ng serve`.
+* Angular 8 with Java Services: 
+    * Look at the **angular8App_Bootstrap** directory for the Angular 8 UI code.
+    * UI Services to access the Java server are located at **angular8App_Bootstrap/src/app/services/Java**
+    * The main module of this app is **angular8App_Bootstrap/src/app/app.module.java.ts**.
+    * Look at the **java** directory for the server side code.
+    * Run the Angular app using `ng serve --configuration=java`.
+* Angular 8 with NodeJS Services: 
+    * Look at the **angular8App_Bootstrap** directory for the Angular 8 UI code.
+    * UI Services to access the NodeJS server are located at **angular8App_Bootstrap/src/app/services/nodeJS**
+    * The main module of this app is **angular8App_Bootstrap/src/app/app.module.nodejs.ts**.
+    * Look at the **nodejs** directory for the server side code.
+    * Run the Angular app using `ng serve --configuration=nodejs`.
+* Angular 8 with PHP Services: 
+    * Look at the **angular8App_Bootstrap** directory for the Angular 8 UI code.
+    * UI Services to access the PHP server are located at **angular8App_Bootstrap/src/app/services/php**
+    * The main module of this app is **angular8App_Bootstrap/src/app/app.module.php.ts**.
+    * Look at the **php** directory for the server side code.
+    * Run the Angular app using `ng serve --configuration=php`.
+* Angular 8 with ColdFusion Services: 
+    * Look at the **angular8App_Bootstrap** directory for the Angular 8 UI code.
+    * UI Services to access the ColdFusion server are located at **angular8App_Bootstrap/src/app/services/coldfusion**
+    * The main module of this app is **angular8App_Bootstrap/src/app/app.module.coldfusion.ts**.
+    * Look at the **coldFusion** directory for the server side code.
+    * Run the Angular app using `ng serve --configuration=coldfusion`.
+* Angular 8 Collected Essays about Build Processes, Unit Testing, Redux, and other stuff:
+   * The modified build Scripts that include testing are in **chapter8/angular8App_Bootstrap**
+   * Scripts run against the **Chapter8** directory
+   * Fully fleshed Unit tests are located in **chapter8/angular8App_Bootstrap**
+   * Redux samples are in **Redux/Angular8**
+   * Directive samples are in **Directives/Angular8**
+   * Pay whatever you want for this book at our [Gumroad Store](https://www.learn-with.com/angular7bonus/)
+
+
 # Angular 7 with Bootstrap
 
 * Angular 7 with Mock Services: 
@@ -39,11 +79,10 @@ If you read the book that covers:
     * The main module of this app is **angular7App_Bootstrap/src/app/app.module.coldfusion.ts**.
     * Look at the **coldFusion** directory for the server side code.
     * Run the Angular app using `ng serve --configuration=coldfusion`.
-* **Coming Soon** Angular 7 Collected Essays about Build Processes, Unit Testing, Redux, and other stuff:
+* Angular 7 Collected Essays about Build Processes, Unit Testing, Redux, and other stuff:
    * The modified build Scripts that include testing are in **chapter8/angular7App_Bootstrap**
    * Scripts run against the **Chapter8** directory
    * Fully fleshed Unit tests are located in **chapter8/angular7App_Bootstrap**
-   * Angular CLI samples are in **angularCLI/Angular7**
    * Redux samples are in **Redux/Angular7**
    * Pay whatever you want for this book at our [Gumroad Store](https://www.learn-with.com/angular7bonus/)
 

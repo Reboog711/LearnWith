@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Redux Vanilla JS</title>
+</head>
+<body>
+
+Enter Your Name: <input id="username">
+<br/><br/>
+Hello <span id="helloValue"></span>
+<br/><br/>
+<button id="goodbyebtn">GoodBye</button>
+<br/><br/>
+Goodbye <span id="goodbyeValue"></span>
+<br/><br/>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/redux/4.0.0/redux.min.js"></script>
+<script>
+
+    var initialState = {
+        helloUser : '',
+        goodbyeUser : ''
+    }
+
+    function helloUser(state ='', action){
+        var newState =  state;
+        switch (action.type) {
+            case 'NAME_MODIFIED':
+                newState = action.value;
+                break;
+            case 'NAME_LEFT':
+                newState = '';
+                break;
+            default:
+        }
+        return newState
+    }
+
+    function goodbyeUser(state ='', action){
+        var newState =  state;
+        switch (action.type) {
+            case 'NAME_LEFT':
+                newState = action.value;
+                break;
+            default:
+
+        }
+        return newState
+    }
+
+
+    reducer = Redux.combineReducers({
+        helloUser,
+        goodbyeUser
+    })
+    // create store
+    var store = Redux.createStore(reducer);
+
+    // create render function
+    function renderHello() {
+        document.getElementById('helloValue').innerHTML = store.getState().helloUser.toString()
+    }
+    renderHello()
+    // subscribe to state changes
+    store.subscribe(renderHello)
+
+
+    document.getElementById('username').addEventListener('keyup', function (e) {
+            store.dispatch({ type: 'NAME_MODIFIED', value : e.target.value})
+    })
+
+
+    function renderGoodbye() {
+        document.getElementById('goodbyeValue').innerHTML = store.getState().goodbyeUser.toString()
+    }
+    store.subscribe(renderGoodbye)
+    document.getElementById('goodbyebtn').addEventListener('click', function (e) {
+            store.dispatch({ type: 'NAME_LEFT', value : store.getState().helloUser})
+    })
+</script>
+
+
+</body>
+</html>
