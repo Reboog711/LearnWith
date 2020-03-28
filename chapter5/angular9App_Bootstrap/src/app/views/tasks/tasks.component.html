@@ -1,0 +1,10 @@
+<div class="wrapper">
+  <app-task-filter class="taskFilter"
+              (filterRequest)="filterRequest($event)"
+              (newTaskRequest)="newTask()">
+  </app-task-filter>
+
+  <div class="mainScreenContainer">
+    <app-task-grid #taskgrid (editTaskRequest)="editTask($event)"></app-task-grid>
+  </div>
+</div>
