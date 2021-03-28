@@ -8,6 +8,86 @@ All books share a similar code base and each chapter has its own code archive.
 
 If you read the book that covers:
 
+
+# Angular 11 with Bootstrap
+
+* Angular 11 with Mock Services:
+  * Look at the **angular11App_Bootstrap** directory for the Angular 11 UI code.
+  * UI Mock Services are located at **angular11App_Bootstrap/src/app/services/mock**
+  * The main module of this app is **angular11App_Bootstrap/src/app/app.module.ts**.
+  * Run the Angular app using `ng serve`.
+* Angular 11 with Java Services:
+  * Look at the **angular11App_Bootstrap** directory for the Angular 11 UI code.
+  * UI Services to access the Java server are located at **angular11App_Bootstrap/src/app/services/Java**
+  * The main module of this app is **angular11App_Bootstrap/src/app/app.module.java.ts**.
+  * Look at the **java** directory for the server side code.
+  * Run the Angular app using `ng serve --configuration=java`.
+* Angular 11 with NodeJS Services:
+  * Look at the **angular11App_Bootstrap** directory for the Angular 11 UI code.
+  * UI Services to access the NodeJS server are located at **angular11App_Bootstrap/src/app/services/nodeJS**
+  * The main module of this app is **angular11App_Bootstrap/src/app/app.module.nodejs.ts**.
+  * Look at the **nodejs** directory for the server side code.
+  * Run the Angular app using `ng serve --configuration=nodejs`.
+* Angular 11 with PHP Services:
+  * Look at the **angular11App_Bootstrap** directory for the Angular 11 UI code.
+  * UI Services to access the PHP server are located at **angular11App_Bootstrap/src/app/services/php**
+  * The main module of this app is **angular11App_Bootstrap/src/app/app.module.php.ts**.
+  * Look at the **php** directory for the server side code.
+  * Run the Angular app using `ng serve --configuration=php`.
+* Angular 11 with ColdFusion Services:
+  * Look at the **angular11App_Bootstrap** directory for the Angular 11 UI code.
+  * UI Services to access the ColdFusion server are located at **angular11App_Bootstrap/src/app/services/coldfusion**
+  * The main module of this app is **angular11App_Bootstrap/src/app/app.module.coldfusion.ts**.
+  * Look at the **coldFusion** directory for the server side code.
+  * Run the Angular app using `ng serve --configuration=coldfusion`.
+* Angular 11 Collected Essays about Build Processes, Unit Testing, Redux, and other stuff:
+  * The custom build Scripts that include testing are in **chapter8/angular6App_Bootstrap**
+  * Scripts run against the **Chapter8** directory
+  * Angular CLI Unit Tests are located in **chapter8/angular11App_Bootstrap**
+  * Redux samples are in **Redux/Angular11**
+  * Directive samples are in **Directives/Angular11**
+  * Pay whatever you want for this book at our [Gumroad Store](https://www.learn-with.com/angular0bonus/)
+
+
+# Angular 10 with Bootstrap
+
+* Angular 10 with Mock Services:
+  * Look at the **angular10App_Bootstrap** directory for the Angular 10 UI code.
+  * UI Mock Services are located at **angular10App_Bootstrap/src/app/services/mock**
+  * The main module of this app is **angular10App_Bootstrap/src/app/app.module.ts**.
+  * Run the Angular app using `ng serve`.
+* Angular 10 with Java Services:
+  * Look at the **angular10App_Bootstrap** directory for the Angular 10 UI code.
+  * UI Services to access the Java server are located at **angular10App_Bootstrap/src/app/services/Java**
+  * The main module of this app is **angular10App_Bootstrap/src/app/app.module.java.ts**.
+  * Look at the **java** directory for the server side code.
+  * Run the Angular app using `ng serve --configuration=java`.
+* Angular 10 with NodeJS Services:
+  * Look at the **angular10App_Bootstrap** directory for the Angular 10 UI code.
+  * UI Services to access the NodeJS server are located at **angular10App_Bootstrap/src/app/services/nodeJS**
+  * The main module of this app is **angular10App_Bootstrap/src/app/app.module.nodejs.ts**.
+  * Look at the **nodejs** directory for the server side code.
+  * Run the Angular app using `ng serve --configuration=nodejs`.
+* Angular 10 with PHP Services:
+  * Look at the **angular10App_Bootstrap** directory for the Angular 10 UI code.
+  * UI Services to access the PHP server are located at **angular10App_Bootstrap/src/app/services/php**
+  * The main module of this app is **angular10App_Bootstrap/src/app/app.module.php.ts**.
+  * Look at the **php** directory for the server side code.
+  * Run the Angular app using `ng serve --configuration=php`.
+* Angular 10 with ColdFusion Services:
+  * Look at the **angular10App_Bootstrap** directory for the Angular 10 UI code.
+  * UI Services to access the ColdFusion server are located at **angular10App_Bootstrap/src/app/services/coldfusion**
+  * The main module of this app is **angular10App_Bootstrap/src/app/app.module.coldfusion.ts**.
+  * Look at the **coldFusion** directory for the server side code.
+  * Run the Angular app using `ng serve --configuration=coldfusion`.
+* Angular 10 Collected Essays about Build Processes, Unit Testing, Redux, and other stuff:
+  * The custom build Scripts that include testing are in **chapter8/angular6App_Bootstrap**
+  * Scripts run against the **Chapter8** directory
+  * Angular CLI Unit Tests are located in **chapter8/angular10App_Bootstrap**
+  * Redux samples are in **Redux/Angular10**
+  * Directive samples are in **Directives/Angular10**
+  * Pay whatever you want for this book at our [Gumroad Store](https://www.learn-with.com/angular0bonus/)
+
 # Angular 9 with Bootstrap
 
 * Angular 9 with Mock Services: 

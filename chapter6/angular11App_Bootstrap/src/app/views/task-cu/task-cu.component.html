@@ -1,0 +1,43 @@
+<div class="modal-header">
+  <h4 class="modal-title">{{title}}</h4>
+  <button type="button" class="close" aria-label="Close"
+          (click)="activeModal.dismiss('Cross click')">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="modal-body">
+  <div class="alert alert-danger" *ngIf="taskUpdateError">
+    <h2>{{taskUpdateError}}</h2>
+  </div>
+  <table>
+    <tr>
+      <td>Description</td>
+      <td>
+        <textarea [(ngModel)]="task.description"></textarea>
+      </td>
+    </tr>
+    <tr>
+      <td>Category</td>
+      <td>
+        <select [(ngModel)]="task.taskCategoryID"
+                class="taskCUDropDown">
+          <option *ngFor="let category of taskModel.taskCategories"
+                  [value]="category.taskCategoryID">
+            {{category.taskCategory}}
+          </option>
+        </select>
+      </td>
+    </tr>
+  </table>
+
+</div>
+<div class="modal-footer">
+  <button class="btn btn-warning" type="button"
+          (click)="activeModal.dismiss('Close click')">
+    Cancel
+  </button>
+  <button class="btn btn-primary" type="button"
+          (click)="onSave()">
+    Save
+  </button>
+</div>
