@@ -1,0 +1,4 @@
+RewriteEngine On
+RewriteRule ^(.*)completed(.*) completed/index.php [L]
+# works for all up through Chapter 6
+RewriteRule ^ index.php

@@ -1,18 +1,18 @@
-<!---
-  Created by jhouser on 5/10/2016.
---->
-
 <cfcomponent displayname="ApplicationCFC" output="true" >
     <cfscript>
-        this.name = "learnWith";
+        this.name = "learnWithC6";
         this.applicationTimeout = createTimeSpan(1,1,0,0);
         this.sessionManagement = "false";
+        this.restsettings.autoregister = true;
+        this.restsettings.skipCFCWithError = true;
     </cfscript>
 
     <cffunction name="onApplicationStart" returntype="boolean" output="true">
         <cfset application.dsn = "LearnWithApp">
-        <cfset application.debugMode = 0>
-        <cfset application.componentPrefix = "chapter6.coldFusion.">
+        <cfset application.debugMode = 1>
+        <cfset application.componentPrefix = "A12.chapter6.coldFusion.">
+        <cfset RestInitApplication(expandPath('/A12/chapter6/coldFusion/com/dotComIt/learnWith/services'),"lw6")>
+
         <cfreturn true>
     </cffunction>
 
@@ -29,11 +29,14 @@
         <cfargument name="eventname" type="string" required="true">
         <cfset var to="myEmail@mydomain.com">
         <cfset var from="myEmail@mydomain.com">
+        <cfset var to="jeffry@dot-com-it.com">
+        <cfset var from="jeffry@dot-com-it.com">
         <cfmail to="#to#" from="#from#" replyto="#from#"
                 subject="Learn With Error #cgi.HTTP_HOST#" type="html">
             Error Date: #now()#<Br/><br/>
         Exception:
             <cfdump var="#arguments.exception#">
+            Exception Drill Down:
             EventName:
             <cfdump var="#arguments.eventname#">
             CGI:
@@ -55,6 +58,5 @@
         </cfif>
 
     </cffunction>
-
 
 </cfcomponent>

@@ -1,0 +1,16 @@
+com\dotComIt\learnWith\services\TaskCategoriesService.class
+com\dotComIt\learnWith\vos\UserVO.class
+com\dotComIt\learnWith\vos\TaskCategoryVO.class
+com\dotComIt\learnWith\vos\TaskVO.class
+com\dotComIt\learnWith\vos\TaskFilterVO.class
+com\dotComIt\learnWith\api\AuthenticationServiceWrapper.class
+com\dotComIt\learnWith\services\TasksService.class
+com\dotComIt\learnWith\services\TaskService.class
+com\dotComIt\learnWith\vos\RestExceptionVO.class
+com\dotComIt\learnWith\config\DatabaseConfig.class
+com\dotComIt\learnWith\api\TaskWrapper.class
+com\dotComIt\learnWith\api\TaskCategoriesWrapper.class
+com\dotComIt\learnWith\api\TasksServiceWrapper.class
+com\dotComIt\learnWith\MyResource.class
+com\dotComIt\learnWith\services\AuthenticationService.class
+com\dotComIt\learnWith\exceptions\RestException.class

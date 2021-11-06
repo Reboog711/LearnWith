@@ -1,9 +1,6 @@
 package com.dotComIt.learnWith.vos;
 
-import java.time.LocalDate;
-
 public class TaskFilterVO {
-
     private int taskCategoryID;
     public int getTaskCategoryID() {
         return taskCategoryID;
@@ -11,7 +8,6 @@ public class TaskFilterVO {
     public void setTaskCategoryID(int taskCategoryID) {
         this.taskCategoryID = taskCategoryID;
     }
-
     private Boolean completed;
     public Boolean getCompleted() {
         return completed;
@@ -19,44 +15,36 @@ public class TaskFilterVO {
     public void setCompleted(Boolean completed) {
         this.completed = completed;
     }
-
-    private LocalDate endDate;
-    public LocalDate getEndDate() {
-        return endDate;
+    private String endDateAsUTCString;
+    public String getEndDateAsUTCString() {
+        return endDateAsUTCString;
     }
-    public void setEndDate(LocalDate endDate) {
-        this.endDate = endDate;
-    }
-
-    private LocalDate startDate;
-    public LocalDate getStartDate() {
-        return startDate;
-    }
-    public void setStartDate(LocalDate startDate) {
-        this.startDate = startDate;
+    public void setEndDateAsUTCString(String endDateAsUTCString) {
+        this.endDateAsUTCString = endDateAsUTCString;
     }
 
-    private LocalDate scheduledEndDate;
-    public LocalDate getScheduledEndDate() {
-        return scheduledEndDate;
+    private String startDateAsUTCString;
+    public String getStartDateAsUTCString() {
+        return startDateAsUTCString;
     }
-    public void setScheduledEndDate(LocalDate scheduledEndDate) {
-        this.scheduledEndDate = scheduledEndDate;
-    }
-
-    private LocalDate scheduledEqualDate;
-    public LocalDate getScheduledEqualDate() {
-        return scheduledEqualDate;
-    }
-    public void setScheduledEqualDate(LocalDate scheduledEqualDate) {
-        this.scheduledEqualDate = scheduledEqualDate;
+    public void setStartDateAsUTCString(String startDateAsUTCString) {
+        this.startDateAsUTCString = startDateAsUTCString;
     }
 
-    private LocalDate scheduledStartDate;
-    public LocalDate getScheduledStartDate() {
-        return scheduledStartDate;
+    private String scheduledEndDateAsUTCString;
+    public String getScheduledEndDateAsUTCString() {
+        return scheduledEndDateAsUTCString;
     }
-    public void setScheduledStartDate(LocalDate scheduledStartDate) {
-        this.scheduledStartDate = scheduledStartDate;
+    public void setScheduledEndDateAsUTCString(String scheduledEndDateAsUTCString) {
+        this.scheduledEndDateAsUTCString = scheduledEndDateAsUTCString;
     }
+    private String scheduledStartDateAsUTCString;
+    public String getScheduledStartDateAsUTCString() {
+        return scheduledStartDateAsUTCString;
+    }
+    public void setScheduledStartDateAsUTCString(String scheduledStartDateAsUTCString) {
+        this.scheduledStartDateAsUTCString = scheduledStartDateAsUTCString;
+    }
+
+
 }

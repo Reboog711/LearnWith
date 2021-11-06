@@ -1,267 +1,142 @@
 package com.dotComIt.learnWith.services;
 
-import com.dotComIt.learnWith.vos.ResultObjectVO;
-import com.dotComIt.learnWith.vos.TaskCategoryVO;
 import com.dotComIt.learnWith.vos.TaskFilterVO;
 import com.dotComIt.learnWith.vos.TaskVO;
 
 import java.sql.*;
-import java.time.LocalDate;
-import java.util.ArrayList;
+import java.time.Instant;
 
 public class TaskService {
 
     Connection connection = null;
-
     public TaskService(Connection connection) {
         this.connection = connection;
     }
 
-    public ResultObjectVO getFilteredTasks(TaskFilterVO filter){
-
+    public TaskVO loadTask(int taskID) {
         String SQL;
         PreparedStatement pstmt = null;
         ResultSet rs = null;
-        ResultObjectVO ro = new ResultObjectVO();
-
         try {
+            // query code here
+            SQL = "select tasks.*, taskCategories.taskCategory from tasks left outer join taskCategories on (tasks.taskCategoryID = taskCategories.taskCategoryID) where taskID = ? ";
 
-            // using a prepared statement which is better suited against injection attacks
-            SQL = "select tasks.*, taskCategories.taskCategory from tasks join taskCategories on (tasks.taskCategoryID = taskCategories.taskCategoryID)";
-            SQL += " where 0=0 ";
-            if(filter.getCompleted() != null){
-                SQL += "and completed = ? ";
-            }
-            if(filter.getTaskCategoryID() != 0){
-                SQL += "and tasks.taskCategoryID = ? ";
-            }
-            if(filter.getTaskID() != 0){
-                SQL += "and taskID = ? ";
-            }
-            if(filter.getStartDate() != null){
-                SQL += "and dateCreated >= ? ";
-            }
-            if(filter.getEndDate() != null){
-                SQL += "and dateCreated <= ? ";
-            }
-            if(filter.getScheduledStartDate() != null){
-                SQL += "and dateScheduled >= ? ";
-            }
-            if(filter.getScheduledEndDate() != null){
-                SQL += "and dateScheduled <= ? ";
-            }
-            SQL += "order by dateCreated ";
-
-            System.out.println(SQL );
             pstmt = connection.prepareStatement(SQL);
-            int parameterCounter = 1;
-            if(filter.getCompleted() != null){
-                pstmt.setBoolean(parameterCounter, filter.getCompleted());
-                parameterCounter++;
-            }
-            if(filter.getTaskCategoryID() != 0){
-                pstmt.setInt(parameterCounter, filter.getTaskCategoryID());
-                parameterCounter++;
-            }
-            if(filter.getTaskID() != 0){
-                pstmt.setInt(parameterCounter, filter.getTaskID());
-                parameterCounter++;
-            }
-            if(filter.getStartDate() != null){
-                pstmt.setDate(parameterCounter,  Date.valueOf( filter.getStartDate() ));
-                parameterCounter++;
-            }
-            if(filter.getEndDate() != null){
-                pstmt.setDate(parameterCounter,  Date.valueOf( filter.getEndDate() ));
-                parameterCounter++;
-            }
-            if(filter.getScheduledStartDate() != null){
-                pstmt.setDate(parameterCounter,  Date.valueOf( filter.getScheduledStartDate() ));
-                parameterCounter++;
-            }
-            if(filter.getScheduledEndDate() != null){
-                pstmt.setDate(parameterCounter,  Date.valueOf( filter.getScheduledEndDate() ));
-                parameterCounter++;
-            }
+            pstmt.setInt(1, taskID);
 
             rs = pstmt.executeQuery();
+            if(!rs.isBeforeFirst()){
+                return null;
+            }  else {
+                rs.next();
+                System.out.println(rs);
 
-            ro.setError(false);
-
-            ArrayList<TaskVO> tasks = new ArrayList<TaskVO>();
-            while(rs.next()){
-
-                // save results
                 TaskVO task = new TaskVO();
                 task.setTaskID(rs.getInt("taskID"));
                 task.setTaskCategoryID(rs.getInt("taskCategoryID"));
                 task.setTaskCategory(rs.getString("taskCategory"));
                 task.setUserID(rs.getInt("userID"));
                 task.setDescription(rs.getString("description"));
-                // this could be wrong
                 if(rs.getBoolean("completed")){
                     task.setCompleted(true);
                 } else {
                     task.setCompleted(false);
                 }
-                // dates
-                task.setDateCreated(rs.getDate("dateCreated").toLocalDate());
-
+                task.setDateCreatedAsUTCString(rs.getTimestamp("dateCreated").toInstant().toString());
                 if(rs.getDate("dateCompleted") != null){
-                    task.setDateCompleted(rs.getDate("dateCompleted").toLocalDate());
+                    task.setDateCompletedAsUTCString(rs.getTimestamp("dateCompleted").toInstant().toString());
                 }
                 if(rs.getDate("dateScheduled") != null){
-                    task.setDateScheduled(rs.getDate("dateScheduled").toLocalDate());
+                    task.setDateScheduledAsUTCString(rs.getTimestamp("dateScheduled").toInstant().toString());
                 }
-
-                tasks.add(task);
+                return task;
             }
-            ro.setResultObject(tasks);
         }
         catch (Exception e) {
-            System.out.println("TaskService getFilteredTasks Exception");
             e.printStackTrace();
-            ro.setError(true);
         }
         finally {
             if (rs != null) try { rs.close(); } catch(Exception e) {}
             if (pstmt != null) try { pstmt.close(); } catch(Exception e) {}
             if (connection != null) try { connection.close(); } catch(Exception e) {}
-        };
+        }
+        return null;
+    }
 
-        return ro;
-    };
-
-
-    public ResultObjectVO getTaskCategories(){
+    public TaskVO createTask(TaskVO taskVO){
+        System.out.println(taskVO.getDescription());
+        System.out.println(taskVO.getUserID());
+        if (taskVO.getUserID() == 0) {
+            return null;
+        }
 
         String SQL;
         PreparedStatement pstmt = null;
         ResultSet rs = null;
-        ResultObjectVO ro = new ResultObjectVO();
-
-        try {
-
-            // using a prepared statement which is better suited against injection attacks
-            SQL = "select * from taskCategories order by taskCategory";
-            pstmt = connection.prepareStatement(SQL);
-            rs = pstmt.executeQuery();
-
-            ro.setError(false);
-
-            ArrayList<TaskCategoryVO> taskCategories = new ArrayList<TaskCategoryVO>();
-            while(rs.next()){
-
-                // save results
-                TaskCategoryVO taskCategory = new TaskCategoryVO();
-                taskCategory.setTaskCategoryID(rs.getInt("taskCategoryID"));
-                taskCategory.setTaskCategory(rs.getString("taskCategory"));
-
-                taskCategories.add(taskCategory);
-            }
-            ro.setResultObject(taskCategories);
-        }
-        catch (Exception e) {
-            System.out.println("TaskService getTaskCategories Exception");
-            e.printStackTrace();
-            ro.setError(true);
-        }
-        finally {
-            if (rs != null) try { rs.close(); } catch(Exception e) {}
-            if (pstmt != null) try { pstmt.close(); } catch(Exception e) {}
-            if (connection != null) try { connection.close(); } catch(Exception e) {}
-        };
-
-        return ro;
-    };
-
-    public ResultObjectVO createTask(int taskCategoryID, int userID, String description){
-
-        String SQL;
-        PreparedStatement pstmt = null;
-        ResultSet rs = null;
-        ResultObjectVO ro = new ResultObjectVO();
-
-        try {
-
-            // using a prepared statement which is better suited against injection attacks
+        try{
+            // query code here
             SQL = "insert into tasks(taskCategoryID, userID, description, completed, dateCreated) values(?,?, ?, 0, ? ) SELECT SCOPE_IDENTITY() as taskID";
-
-            System.out.println(SQL );
             pstmt = connection.prepareStatement(SQL);
-            if(taskCategoryID != 0){
-                pstmt.setInt(1, taskCategoryID);
+            if(taskVO.getTaskCategoryID() != 0){
+                pstmt.setInt(1, taskVO.getTaskCategoryID());
             } else {
                 pstmt.setNull(1, Types.INTEGER);
             }
-            pstmt.setInt(2, userID);
-            pstmt.setString(3, description);
-            LocalDate dateCreated = LocalDate.now();
-            pstmt.setObject(4, dateCreated);
-            pstmt.executeUpdate();
-            // get the second result set
-            rs = pstmt.getGeneratedKeys();
+            pstmt.setInt(2, taskVO.getUserID());
+            pstmt.setString(3, taskVO.getDescription());
 
+            String UTCDateTime = Instant.now().toString();
+            pstmt.setTimestamp(4, java.sql.Timestamp.from( Instant.parse(UTCDateTime)));
+
+            pstmt.executeUpdate();
+            rs = pstmt.getGeneratedKeys();
             while(rs.next()){
-                TaskFilterVO filter = new TaskFilterVO();
-                filter.setTaskID(rs.getInt("taskID"));
-                return getFilteredTasks(filter);
+                System.out.println(rs.getInt("taskID"));
+                return loadTask(rs.getInt("taskID"));
             }
         }
         catch (Exception e) {
             System.out.println("TaskService createTask Exception");
             e.printStackTrace();
-            ro.setError(true);
         }
         finally {
             if (rs != null) try { rs.close(); } catch(Exception e) {}
             if (pstmt != null) try { pstmt.close(); } catch(Exception e) {}
             if (connection != null) try { connection.close(); } catch(Exception e) {}
         };
+        return null;
+    }
 
-        return ro;
-    };
-
-    public ResultObjectVO updateTask(int taskID, int taskCategoryID, String description){
-
+    // todo use taskID in book
+    public TaskVO updateTask(TaskVO taskVO, int taskID){
         String SQL;
         PreparedStatement pstmt = null;
         ResultSet rs = null;
-        ResultObjectVO ro = new ResultObjectVO();
-
         try {
-
-            // using a prepared statement which is better suited against injection attacks
+            // query code here
             SQL = "update tasks set taskCategoryID = ?, description = ? where taskID = ?";
-
-            System.out.println(SQL );
             pstmt = connection.prepareStatement(SQL);
-            if(taskCategoryID != 0){
-                pstmt.setInt(1, taskCategoryID);
+            if(taskVO.getTaskCategoryID() != 0){
+                pstmt.setInt(1, taskVO.getTaskCategoryID());
             } else {
                 pstmt.setNull(1, Types.INTEGER);
             }
-            pstmt.setString(2, description);
+            pstmt.setString(2, taskVO.getDescription());
             pstmt.setInt(3, taskID);
-
             pstmt.executeUpdate();
 
-            TaskFilterVO filter = new TaskFilterVO();
-            filter.setTaskID(taskID);
-            return getFilteredTasks(filter);
+            return loadTask(taskID);
+
         }
         catch (Exception e) {
-            System.out.println("TaskService UpdateTask Exception");
             e.printStackTrace();
-            ro.setError(true);
         }
         finally {
             if (rs != null) try { rs.close(); } catch(Exception e) {}
             if (pstmt != null) try { pstmt.close(); } catch(Exception e) {}
             if (connection != null) try { connection.close(); } catch(Exception e) {}
         };
-
-        return ro;
-    };
+        return null;
+    }
 
 }

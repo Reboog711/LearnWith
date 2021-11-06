@@ -1,0 +1,44 @@
+<div class="taskGridWrapper">
+  <div class="alert alert-danger" *ngIf="taskLoadError">
+    <h2>{{taskLoadError}}</h2>
+  </div>
+    <ngx-datatable #taskGrid
+                   class="material gridStyle"
+                   [rows]="tasks"
+                   [headerHeight]="50"
+                   [rowHeight]="50"
+                   [columnMode]="'force'"
+    >
+      <ngx-datatable-column name="Completed" [maxWidth]="100">
+        <ng-template let-row="row" let-value="value" ngx-datatable-cell-template>
+          <input type="checkbox"
+                 [disabled]="userModel.isUserInRole(userModel.CREATOR_ROLE)"
+                 [checked]="value" (click)="onCompletedCheckBoxChange(row)" />
+        </ng-template>
+      </ngx-datatable-column>
+      <ngx-datatable-column name="Description" >
+      </ngx-datatable-column>
+      <ngx-datatable-column name="Category" prop="taskCategory">
+      </ngx-datatable-column>
+      <ngx-datatable-column name="Date Created" prop="dateCreatedAsUTCString"  >
+        <ng-template let-value="value" ngx-datatable-cell-template>
+          {{value | date: 'shortDate'}}
+        </ng-template>
+      </ngx-datatable-column>
+      <ngx-datatable-column name="Date Scheduled" prop="dateScheduledAsUTCString"  ><!-- [maxWidth]="100" -->
+        <ng-template let-value="value" ngx-datatable-cell-template>
+          {{value | date: 'shortDate'}}
+        </ng-template>
+      </ngx-datatable-column>
+      <ngx-datatable-column  [minWidth]="90"
+                             *ngIf="userModel.isUserInRole(userModel.TASKER_ROLE)">
+        <ng-template let-row="row" ngx-datatable-cell-template>
+          <button (click)="onEditTask(row)">Edit Task</button>
+          <button (click)="onScheduleTaskRequest(row)" [hidden]="!schedulerState">
+            +
+          </button>
+        </ng-template>
+      </ngx-datatable-column>
+    </ngx-datatable>
+</div>
+

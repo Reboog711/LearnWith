@@ -1,27 +1,23 @@
-/**
- * Created by jhouser on 6/3/2016.
- */
+const sql = require("mssql");
 
-var sql = require("mssql");
-
-var config = {
+const config = {
     user: 'LearnWithUser',
     password: 'password',
-    server: 'developer.dot-com-it.com',
+    server: 'localhost',
     database: 'LearnWithApp',
-    port:2433
+    port : 1433,
+    options: {
+        trustServerCertificate: true // change to true for local dev / self-signed certs
+    }
 };
 
-var executeQuery  = function(query, resultHandler, failureHandler){
+
+const executeQuery  = (query) => {
     console.log('in execute query');
-
-    var connection = new sql.ConnectionPool(config);
-    connection.connect(function(){
-        console.log('connected')
-        new sql.Request(connection).query(query).then(resultHandler).catch(failureHandler);
-    });
-    console.log('after connection initiated')
-
+    return sql.connect(config).then(pool => {
+        console.log('in connect promise');
+        return pool.request().query(query)
+    })
 };
 
 exports.executeQuery = executeQuery;

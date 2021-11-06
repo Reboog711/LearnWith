@@ -1,87 +1,66 @@
 package com.dotComIt.learnWith.vos;
-
-import java.time.LocalDate;
-
 public class TaskVO {
 
     private int taskID;
     public int getTaskID() {
         return taskID;
     }
-
     public void setTaskID(int taskID) {
         this.taskID = taskID;
     }
-
     private String taskCategory;
     public String getTaskCategory() {
         return taskCategory;
     }
-
     public void setTaskCategory(String taskCategory) {
         this.taskCategory = taskCategory;
     }
-
-
     private boolean completed;
     public boolean isCompleted() {
         return completed;
     }
-
     public void setCompleted(boolean completed) {
         this.completed = completed;
     }
-
-    private LocalDate dateCompleted;
-    public LocalDate getDateCompleted() {
-        return dateCompleted;
+    private String dateCompletedAsUTCString;
+    public String getDateCompletedAsUTCString() {
+        return dateCompletedAsUTCString;
     }
-
-    public void setDateCompleted(LocalDate dateCompleted) {
-        this.dateCompleted = dateCompleted;
+    public void setDateCompletedAsUTCString(String dateCompletedAsUTCString) {
+        this.dateCompletedAsUTCString = dateCompletedAsUTCString;
     }
-
-    private LocalDate dateCreated;
-    public LocalDate getDateCreated() {
-        return dateCreated;
+    private String dateCreatedAsUTCString;
+    public String getDateCreatedAsUTCString() {
+        return dateCreatedAsUTCString;
     }
-
-    public void setDateCreated(LocalDate dateCreated) {
-        this.dateCreated = dateCreated;
+    public void setDateCreatedAsUTCString(String dateCreatedAsUTCString) {
+        this.dateCreatedAsUTCString = dateCreatedAsUTCString;
     }
-
-    private LocalDate dateScheduled;
-    public LocalDate getDateScheduled() {
-        return dateScheduled;
+    private String dateScheduledAsUTCString;
+    public String getDateScheduledAsUTCString() {
+        return dateScheduledAsUTCString;
     }
-
-    public void setDateScheduled(LocalDate dateScheduled) {
-        this.dateScheduled = dateScheduled;
+    public void setDateScheduledAsUTCString(String dateScheduledAsUTCString) {
+        this.dateScheduledAsUTCString = dateScheduledAsUTCString;
     }
-
     private String description;
     public String getDescription() {
         return description;
     }
-
     public void setDescription(String description) {
         this.description = description;
     }
-
     private int taskCategoryID;
     public int getTaskCategoryID() {
         return taskCategoryID;
     }
-
     public void setTaskCategoryID(int taskCategoryID) {
         this.taskCategoryID = taskCategoryID;
     }
-
     private int userID;
     public int getUserID() {
         return userID;
     }
-
     public void setUserID(int userID) {
         this.userID = userID;
     }

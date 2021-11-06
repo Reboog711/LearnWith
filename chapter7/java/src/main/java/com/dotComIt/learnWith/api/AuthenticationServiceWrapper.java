@@ -1,25 +1,24 @@
 package com.dotComIt.learnWith.api;
 
-
 import com.dotComIt.learnWith.config.DatabaseConfig;
 import com.dotComIt.learnWith.services.AuthenticationService;
-import com.dotComIt.learnWith.vos.ResultObjectVO;
 import com.dotComIt.learnWith.vos.UserVO;
+import jakarta.ws.rs.Path;
 
-import javax.ws.rs.Consumes;
-import javax.ws.rs.POST;
-import javax.ws.rs.Path;
-import javax.ws.rs.Produces;
-import javax.ws.rs.core.MediaType;
+import jakarta.ws.rs.POST;
+import jakarta.ws.rs.Consumes;
+import jakarta.ws.rs.Produces;
+import jakarta.ws.rs.core.MediaType;
 
-@Path("login")
+import com.dotComIt.learnWith.exceptions.RestException;
+import com.dotComIt.learnWith.vos.RestExceptionVO;
+import jakarta.ws.rs.core.Response;
+
+@Path("user/login")
 public class AuthenticationServiceWrapper {
-
     private DatabaseConfig dc;
     private AuthenticationService as;
-
     public AuthenticationServiceWrapper(){
-        System.out.println("In Authentication Service Wrapper Constructor");
         dc = new DatabaseConfig();
         as = new AuthenticationService(dc.openConnection());
     }
@@ -27,11 +26,17 @@ public class AuthenticationServiceWrapper {
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    public ResultObjectVO login(UserVO user){
-        System.out.println(user.getPassword());
-        System.out.println(user.getUsername());
-        return as.authenticate(user.getUsername(), user.getPassword());
+    public UserVO login(UserVO user){
+        UserVO result = as.authenticate(user.getUsername(), user.getPassword());
+        if (result == null) {
+            System.out.println("No Result");
+            // todo throw rest exception here
+            RestExceptionVO restException = new RestExceptionVO();
+            restException.setMessage("User Not Authorized");
+            throw new RestException(restException, Response.Status.UNAUTHORIZED);
+        }
+        System.out.println(result.toString());
+        return result;
     }
-
 
 }

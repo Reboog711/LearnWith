@@ -1,48 +1,44 @@
 <?php
-/**
- * Created by IntelliJ IDEA.
- * User: jhouser
- * Date: 12/8/2017
- * Time: 11:43 AM
- * Service API to load the filtered tasks
- * expect GET request with these values:
- * completed
- * startDate
- * More to come in later chapters
- */
 header("Content-Type: application/json; charset=UTF-8");
 header("Access-Control-Allow-Methods: GET");
 
 require_once dirname(__FILE__) . '/../../config/DatabaseConfig.php';
-require_once dirname(__FILE__) . '/../../services/TaskService.php';
+require_once dirname(__FILE__) . '/../../services/TasksService.php';
 require_once dirname(__FILE__) . '/../../vos/TaskFilterVO.php';
 
 $method = $_SERVER['REQUEST_METHOD'];
-
 switch ($method) {
     case 'GET':
+        // other code here
         $databaseConfig = new DatabaseConfig();
         $conn = $databaseConfig->openConnection();
-
-        $taskService = new TaskService($conn);
-
-        // Create TaskFilterVO using the URL Variables
+        $tasksService = new TasksService($conn);
         $taskFilter = new TaskFilterVO();
         if(isset($_GET["completed"])){
             $taskFilter->completed = $_GET["completed"];
         }
-        if(isset($_GET["startDate"])) {
-            $taskFilter->startDate = $_GET["startDate"];
+        if(isset($_GET["startDateAsUTCString"])) {
+            $taskFilter->startDateAsUTCString = $_GET["startDateAsUTCString"];
         }
-        $result = $taskService->getFilteredTasks($taskFilter);
+        $result = $tasksService->getFilteredTasks($taskFilter);
 
-        echo(json_encode($result) );
+        if (is_a($result, 'Exception')) {
+            $r = new RestExceptionVO();
+            $r->message = $result.getMessage();
+            http_response_code(500 );
+            echo(json_encode($result) );
+
+        } else {
+            http_response_code(200);
+            echo(json_encode($result) );
+        }
 
         break;
     default:
-        $r = new ResultObjectVO();
-        $r->error = true;
-        $r->resultObject = "Unknown Request Type";
+        $r = new RestExceptionVO();
+        $r->message = "Unknown Request Type";
+        $r->message = $method;
+        http_response_code(404);
         echo(json_encode($r) );
         break;
 }

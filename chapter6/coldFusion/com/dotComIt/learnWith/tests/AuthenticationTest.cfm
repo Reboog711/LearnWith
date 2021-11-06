@@ -1,7 +1,7 @@
 <cfset application.debugMode = 1>
 <h1>Test Authentication Success</h1>
 
-<cfset service = createObject('component','#application.componentPrefix#com.dotComIt.learnWith.services.AuthenticationService')>
+<cfset service = createObject('component','#application.componentPrefix#com.dotComIt.learnWith.services.UserService')>
 <cfset passwordHashed = #hash('me')#/>
 <cfset results = service.authenticate('me',passwordHashed)>
 <Br/><Br/>

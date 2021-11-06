@@ -10,27 +10,22 @@ public class UserVO {
     public int getUserID() {
         return userID;
     }
-
     public void setUserID(int userID) {
         this.userID = userID;
     }
-
 
     private String username;
     public String getUsername() {
         return username;
     }
-
     public void setUsername(String username) {
         this.username = username;
     }
-
 
     private int roleID;
     public int getRoleID() {
         return roleID;
     }
-
     public void setRoleID(int roleID) {
         this.roleID = roleID;
     }
@@ -39,11 +34,8 @@ public class UserVO {
     public String getPassword() {
         return password;
     }
-
     public void setPassword(String password) {
         this.password = password;
     }
-
-
 
 }

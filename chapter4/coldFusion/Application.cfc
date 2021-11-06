@@ -1,18 +1,18 @@
-<!---
-  Created by jhouser on 5/10/2016.
---->
-
 <cfcomponent displayname="ApplicationCFC" output="true" >
     <cfscript>
-        this.name = "learnWith";
+        this.name = "learnWithC4";
         this.applicationTimeout = createTimeSpan(1,1,0,0);
         this.sessionManagement = "false";
+        this.restsettings.autoregister = true;
+        this.restsettings.skipCFCWithError = true;
     </cfscript>
 
     <cffunction name="onApplicationStart" returntype="boolean" output="true">
         <cfset application.dsn = "LearnWithApp">
-        <cfset application.debugMode = 0>
-        <cfset application.componentPrefix = "chapter4.coldFusion.">
+        <cfset application.debugMode = 1>
+        <cfset application.componentPrefix = "A12.chapter5.coldFusion.">
+        <cfset RestInitApplication(expandPath('/A12/chapter5/coldFusion/com/dotComIt/learnWith/services'),"lw5")>
+
         <cfreturn true>
     </cffunction>
 
@@ -36,6 +36,7 @@
             Error Date: #now()#<Br/><br/>
         Exception:
             <cfdump var="#arguments.exception#">
+            Exception Drill Down:
             EventName:
             <cfdump var="#arguments.eventname#">
             CGI:

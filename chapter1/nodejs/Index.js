@@ -1,8 +1,11 @@
-/**
- * Created by jhouser on 6/3/2016.
- */
+const express = require("express");
+const app = express();
 
-var server = require("./com/dotComIt/learnWith/server/Server");
-var requestRouter = require("./com/dotComIt/learnWith/server/RequestRouter");
-var requestHandlers = require("./com/dotComIt/learnWith/server/ResponseHandlers");
-server.start(requestRouter.route, requestHandlers.handlers);
+app.get('/', (req, res) => {
+    res.send('The Index')
+})
+
+const port = 8080;
+app.listen(port, () => {
+    console.log(`Server running at http://localhost:${port}`)
+})

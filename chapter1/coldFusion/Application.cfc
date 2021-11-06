@@ -1,18 +1,18 @@
-<!---
-  Created by jhouser on 5/10/2016.
---->
-
 <cfcomponent displayname="ApplicationCFC" output="true" >
     <cfscript>
-        this.name = "learnWith";
+        this.name = "learnWithC1";
         this.applicationTimeout = createTimeSpan(1,1,0,0);
         this.sessionManagement = "false";
+        this.restsettings.autoregister = true;
+        this.restsettings.skipCFCWithError = true;
     </cfscript>
 
     <cffunction name="onApplicationStart" returntype="boolean" output="true">
         <cfset application.dsn = "LearnWithApp">
-        <cfset application.debugMode = 0>
-        <cfset application.componentPrefix = "chapter1.coldFusion.">
+        <cfset application.debugMode = 1>
+        <cfset application.componentPrefix = "A12.chapter1.coldFusion.">
+        <cfset RestInitApplication(expandPath('/A12/chapter1/coldFusion/com/dotComIt/learnWith/services'),"lw1")>
+
         <cfreturn true>
     </cffunction>
 
@@ -29,10 +29,12 @@
         <cfargument name="eventname" type="string" required="true">
         <cfset var to="myEmail@mydomain.com">
         <cfset var from="myEmail@mydomain.com">
+        <cfset var to="jeffry@dot-com-it.com">
+        <cfset var from="jeffry@dot-com-it.com">
         <cfmail to="#to#" from="#from#" replyto="#from#"
                 subject="Learn With Error #cgi.HTTP_HOST#" type="html">
             Error Date: #now()#<Br/><br/>
-        Exception:
+            Exception:
             <cfdump var="#arguments.exception#">
             EventName:
             <cfdump var="#arguments.eventname#">
@@ -41,6 +43,19 @@
             Request
             <Cfdump var="#request#">
         </cfmail>
+
+        <cfif application.debugMode is 1>
+            Error Date: #now()#<Br/><br/>
+            Exception:
+            <cfdump var="#arguments.exception#">
+            EventName:
+            <cfdump var="#arguments.eventname#">
+            CGI:
+            <cfdump var="#cgi#">
+            Request
+            <Cfdump var="#request#">
+        </cfif>
+
     </cffunction>
 
 </cfcomponent>

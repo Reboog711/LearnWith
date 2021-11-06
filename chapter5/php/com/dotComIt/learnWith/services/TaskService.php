@@ -1,98 +1,28 @@
 <?php
-/**
- * Created by IntelliJ IDEA.
- * User: jhouser
- * Date: 12/6/2017
- * Time: 11:59 AM
- */
-
-require_once  dirname(__FILE__) . '/../vos/ResultObjectVO.php';
-require_once  dirname(__FILE__) . '/../vos/TaskFilterVO.php';
 require_once  dirname(__FILE__) . '/../vos/TaskVO.php';
-require_once  dirname(__FILE__) . '/../vos/TaskCategoryVO.php';
 
-class TaskService{
 
+class TaskService
+{
     private $conn;
-
     function __construct($conn) {
         $this->conn = $conn;
     }
 
-    function getFilteredTasks(TaskFilterVO $filter)
-    {
+    function loadTask($taskID){
+        try{
+            // query code here
+            $query = "select tasks.*, taskCategories.taskCategory from tasks left outer join taskCategories on (tasks.taskCategoryID = taskCategories.taskCategoryID)";
+            $query .= "where taskID = :taskID ";
+            $getTask = $this->conn->prepare($query);
+            $getTask->bindParam(':taskID', $taskID);
+            $getTask->execute();
+            $records = $getTask->fetchAll();
 
-        try
-        {
-            // for PDO queries
-            $query = "select tasks.*, taskCategories.taskCategory from tasks join taskCategories on (tasks.taskCategoryID = taskCategories.taskCategoryID)";
-//            echo($query);
-            $query .= " where 0=0 ";
-            if(isset($filter->completed)){
-                $query .= "and completed = :completed ";
-            };
-            if(isset($filter->taskID)){
-                $query .= "and taskID = :taskID ";
-            };
-            if(isset($filter->taskCategoryID)){
-                if($filter->taskCategoryID != 0){
-                    $query .= "and tasks.taskCategoryID = :taskCategoryID ";
-                }
-            };
-            if(isset($filter->startDate)){
-                $query .= "and dateCreated >= :startDate ";
-            };
-            if(isset($filter->endDate)){
-                $query .= "and dateCreated <= :endDate ";
-            };
-            if(isset($filter->scheduledStartDate)){
-                $query .= "and dateScheduled >= :scheduledStartDate ";
-            };
-            if(isset($filter->scheduledEndDate)){
-                $query .= "and dateScheduled <= :scheduledEndDate ";
-            };
-            $query .= "order by dateCreated ";
-
-
-            $getTasks = $this->conn->prepare($query);
-            if(isset($filter->completed)){
-                $getTasks->bindParam(':completed', $filter->completed);
-            }
-            if(isset($filter->taskID)){
-                $getTasks->bindParam(':taskID', $filter->taskID);
-            };
-            if(isset($filter->taskCategoryID)){
-                if($filter->taskCategoryID != 0) {
-                    $getTasks->bindParam(':taskCategoryID', $filter->taskCategoryID);
-                }
-            }
-            if(isset($filter->startDate)){
-                $getTasks->bindParam(':startDate', $filter->startDate);
-            }
-            if(isset($filter->endDate)){
-                $getTasks->bindParam(':endDate', $filter->endDate);
-            };
-            if(isset($filter->scheduledStartDate)){
-                $getTasks->bindParam(':scheduledStartDate', $filter->scheduledStartDate);
-            };
-            if(isset($filter->scheduledEndDate)){
-                $getTasks->bindParam(':scheduledEndDate', $filter->scheduledEndDate);
-            };
-            $getTasks->execute();
-
-            $records = $getTasks->fetchAll();
-//            var_dump($records);
-//            $count = sizeof($records);
-            /*            echo('<Br/><br/><h1>Count</h1>');
-                        var_dump($count);
-                       echo($count);*/
-            $result = new ResultObjectVO();
-
-
-            $result->error = false;
-            $result->resultObject = [];
-            foreach ($records as $row) {
-
+            $taskCount = sizeof($records);
+            if($taskCount === 1){
+                $row = $records[0];
+                $dateFormat = "Y-m-d\TH:i:s.v\Z";
                 $task = new TaskVO();
                 $task->taskID = (int)$row['taskID'];
                 $task->taskCategoryID = (int)$row['taskCategoryID'];
@@ -104,160 +34,95 @@ class TaskService{
                 } else {
                     $task->completed = 0;
                 }
-//                echo($task->completed);
-
                 $dateCreated = new DateTime();
                 $dateCreated->setTimestamp(strtotime($row['dateCreated']));
-                $task->dateCreated = date_format($dateCreated,"m/d/Y");
-
+                $task->dateCreatedAsUTCString = date_format($dateCreated,$dateFormat);
                 if($row['dateCompleted']){
                     $dateCompleted = new DateTime();
                     $dateCompleted->setTimestamp(strtotime($row['dateCompleted']));
-/*                        var_dump($row['dateCompleted']);echo("<Br/><br/>");
-                    var_dump($dateCompleted);echo("<Br/><br/>");*/
-                    $task->dateCompleted = date_format($dateCompleted,"m/d/Y") ;
+                    $task->dateCompletedAsUTCString = date_format($dateCompleted,$dateFormat) ;
+                } else {
+                    $task->dateCompletedAsUTCString = "";
                 }
                 if($row['dateScheduled']){
                     $dateScheduled = new DateTime();
                     $dateScheduled->setTimestamp(strtotime($row['dateScheduled']));
-/*                        echo(strtotime($row['dateScheduled']));echo("<Br/><br/>");
-                    var_dump($row['dateScheduled']);echo("<Br/><br/>");
-                    var_dump($dateScheduled);echo("<Br/><br/>");*/
-                    $task->dateScheduled = date_format($dateScheduled,"m/d/Y") ;
+                    $task->dateScheduledAsUTCString = date_format($dateScheduled,$dateFormat) ;
+                } else {
+                    $task->dateScheduledAsUTCString = "";
                 }
-                array_push($result->resultObject, $task);
+                return $task;
+            } else {
+                return null;
             }
-
-            return $result;
         }
-        catch(Exception $e)
-        {
-            $result = new ResultObjectVO();
-            $result->error = true;
-            return $result;
-        }
-    }
-
-
-    function getTaskCategories()
-    {
-
-        try
-        {
-            // for PDO queries
-            $query = "select * from taskCategories order by taskCategory";
-
-            $getTaskCategories = $this->conn->prepare($query);
-            $getTaskCategories->execute();
-
-            $result = new ResultObjectVO();
-            $result->error = false;
-            $result->resultObject = [];
-
-            $records = $getTaskCategories->fetchAll();
-
-            foreach ($records as $row) {
-                $task = new TaskCategoryVO();
-                $task->taskCategoryID = (int)$row['taskCategoryID'];
-                $task->taskCategory = $row['taskCategory'];
-                array_push($result->resultObject, $task);
-            }
-
-            return $result;
-        }
-        catch(Exception $e)
-        {
-            $result = new ResultObjectVO();
-            $result->error = true;
-            return $result;
+        catch(Exception $e){
+            return $e;
         }
     }
 
     function createTask($taskCategoryID, $userID, $description){
-
         try
         {
-            // for PDO queries
+            // query code here
             $query = "insert into tasks(
-                taskCategoryID, userID, description, completed, dateCreated
+                  taskCategoryID, userID, description, completed, dateCreated
               ) values(
-                :taskCategoryID,
-                :userID,
-                :description,
-                0,
-                :dateCreated
+                :taskCategoryID, :userID, :description, 0,:dateCreated
              )  
              SELECT SCOPE_IDENTITY() as taskID";
 
             $createTask = $this->conn->prepare($query);
-
-            // add parameters
             if($taskCategoryID !== 0){
                 $createTask->bindParam(':taskCategoryID', $taskCategoryID);
             } else {
                 $createTask->bindValue(':taskCategoryID', null);
             }
-
             $createTask->bindParam(':userID', $userID);
             $createTask->bindParam(':description', $description);
-            $dateCreated = date("Y-m-d");
+            $dateCreated = new DateTime();
+            $dateCreated->setTimezone(new DateTimeZone('UTC'));
+            $dateCreated = date_format($dateCreated, 'Y-m-d H:i:s');
             $createTask->bindParam(':dateCreated', $dateCreated);
 
-            $createTask->execute();
 
+            $createTask->execute();
             $createTask->nextRowset();
             $records = $createTask->fetchAll();
-
             $row = $records[0];
-            $taskFilter = new TaskFilterVO();
-            $taskFilter->taskID = $row['taskID'];
-            return self::getFilteredTasks($taskFilter);
-
+            return self::loadTask($row["taskID"]);
         }
         catch(Exception $e)
         {
-            $result = new ResultObjectVO();
-            $result->error = true;
-            $result->resultObject = $e;
-            return $result;
+            return $e;
         }
     }
 
     function updateTask($taskID, $taskCategoryID, $description){
-        try
-        {
-            // for PDO queries
+        try{
             $query = "update tasks set
                       taskCategoryID = :taskCategoryID,
                       description = :description
                       where taskID = :taskID";
-
             $updateTask = $this->conn->prepare($query);
-
-            // add parameters
             if($taskCategoryID !== 0){
                 $updateTask->bindParam(':taskCategoryID', $taskCategoryID);
             } else {
                 $updateTask->bindValue(':taskCategoryID', null);
             }
-            $updateTask->bindParam(':taskID', $taskID);
             $updateTask->bindParam(':description', $description);
+            $updateTask->bindParam(':taskID', $taskID);
+            $updateTask->execute();
+            return self::loadTask($taskID);
 
-           $updateTask->execute();
-
-            $taskFilter = new TaskFilterVO();
-            $taskFilter->taskID = $taskID;
-            return self::getFilteredTasks($taskFilter);
 
         }
         catch(Exception $e)
         {
-            $result = new ResultObjectVO();
-            $result->error = true;
-            return $result;
+            return $e;
         }
-
     }
+
 
 }
 
