@@ -57,6 +57,7 @@ If you read the book that covers:
 In December 2021, there was an update to the books and the code to make all servics use the same exact REST API endpoints, verbs, inputs, and outputs.  
 If you bought the books before then, you can get the code at [this tag](https://github.com/Reboog711/LearnWith/tree/Version2).
 
+---
 In December 2017, there was a update to the books and the code to make the service layer more consistent across books. 
 If you bought the books before then, you can get the code at [this tag](https://github.com/Reboog711/LearnWith/tree/Version1).  
 
