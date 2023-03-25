@@ -1,0 +1,25 @@
+<table>
+  <tr *ngIf="loginError">
+    <td colspan="3">
+      <div class="alert alert-danger warningAlert ">
+        <h2>{{loginError}}</h2>
+      </div>
+    </td>
+  </tr>
+  <tr>
+    <td>Username</td>
+    <td><input type="text" [(ngModel)]="username"> </td>
+    <td *ngIf="usernameError" class="alert-danger">{{usernameError}}</td>
+  </tr>
+  <tr>
+    <td>Password</td>
+    <td><input type="password" [(ngModel)]="password"> </td>
+    <td *ngIf="passwordError" class="alert-danger">{{passwordError}}</td>
+  </tr>
+  <tr>
+    <td colspan="2">
+      <input type="button" value="Reset" (click)="onReset()" class="btn btn-warning mr-1"/>
+      <input type="button" value="Login" (click)="onLogin()" class="btn btn-primary"/>
+    </td>
+  </tr>
+</table>

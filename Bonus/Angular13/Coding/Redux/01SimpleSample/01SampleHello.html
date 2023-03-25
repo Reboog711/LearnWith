@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Redux Vanilla JS</title>
+</head>
+<body>
+
+Enter Your Name: <input id="username">
+<br/><br/>
+Hello <span id="helloValue"></span>
+<br/><br/>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/redux/4.0.0/redux.min.js"></script>
+<script>
+
+    function reducer(state, action) {
+        var newState = Object.assign({}, state)
+        if (typeof state === 'undefined') {
+            newState = {
+                helloUser : ''
+            }
+        }
+        switch (action.type) {
+            case 'NAME_MODIFIED':
+                newState.helloUser = action.value
+                break;
+            default:
+            // do nothing
+        }
+        return newState;
+    }
+    // create store
+    var store = Redux.createStore(reducer);
+
+    // create render function
+    function renderHello() {
+        document.getElementById('helloValue').innerHTML = store.getState().helloUser.toString()
+    }
+    renderHello()
+    // subscribe to state changes
+    store.subscribe(renderHello)
+
+
+    document.getElementById('username').addEventListener('keyup', function (e) {
+            store.dispatch({ type: 'NAME_MODIFIED', value : e.target.value})
+    })
+
+</script>
+
+
+</body>
+</html>

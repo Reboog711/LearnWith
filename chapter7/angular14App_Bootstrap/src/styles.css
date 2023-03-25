@@ -1,0 +1,66 @@
+/* You can add global styles to this file, and also import other style files */
+html {
+  height: 99%;
+  width: 100%;
+}
+body {
+  height: 100%;
+  width: 100%;
+  padding: 5px;
+}
+
+button.calendar, button.calendar:active {
+  width: 2.75rem;
+  background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACIAAAAcCAYAAAAEN20fAAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAAOxAAADsQBlSsOGwAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAAEUSURBVEiJ7ZQxToVAEIY/YCHGxN6XGOIpnpaEsBSeQC9ArZbm9TZ6ADyBNzAhQGGl8Riv4BLAWAgmkpBYkH1b8FWT2WK/zJ8ZJ4qiI6XUI3ANnGKWBnht2/ZBDRK3hgVGNsCd7/ui+JkEIrKtqurLpEWaphd933+IyI3LEIdpCYCiKD6HcuOa/nwOa0ScJEnk0BJg0UTUWJRl6RxCYEzEmomsIlPU3IPW+grIAbquy+q6fluy/28RIBeRMwDXdXMgXLj/B2uimRXpui4D9sBeRLKl+1N+L+t6RwbWrZliTTTr1oxYtzVWiTQAcRxvTX+eJMnlUDaO1vpZRO5NS0x48sIwfPc87xg4B04MCzQi8hIEwe4bl1DnFMCN2zsAAAAASUVORK5CYII=') !important;
+  background-repeat: no-repeat;
+  background-size: 23px;
+  background-position: center;
+  height: 99%;
+}
+
+table{
+  border-collapse: collapse;
+}
+td {
+  vertical-align: top;
+  padding:5px;
+}
+td.border-top{
+  border-top:solid 2px grey !important;
+}
+td.border-right{
+  border-right:solid 2px grey !important;;
+}
+td.border-bottom{
+  border-bottom:solid 2px grey !important;;
+}
+td.border-left{
+  border-left:solid 2px grey !important;;
+}
+.horizontal-layout-94{
+  position: relative;
+  display: inline-block;
+  vertical-align: top;
+  width:94%;
+  height : 100%;
+}
+.horizontal-layout-4{
+  display: inline-block;
+  vertical-align: top;
+  width:4%;
+  height:100%;
+}
+.horizontal-layout-60 {
+  position: relative;
+  display: inline-block;
+  vertical-align: top;
+  width:60%;
+  height:100%;
+}
+.horizontal-layout-30{
+  position: relative;
+  display: inline-block;
+  vertical-align: top;
+  width:30%;
+  height:100%;
+}

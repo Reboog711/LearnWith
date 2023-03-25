@@ -1,0 +1,31 @@
+.regular {
+  background: #ffffff;
+  color: #000000;
+}
+
+.reversed {
+  background: #000000;
+  color: #ffffff;
+}
+
+
+.regular-red {
+  background: #ffffff;
+  color: #ff0000;
+}
+
+.reversed-red {
+  background: #ff0000;
+  color: #ffffff;
+}
+
+.regular-blue {
+  background: #ffffff;
+  color: #0000ff;
+}
+
+.reversed-blue {
+  background: #0000ff;
+  color: #ffffff;
+}
+

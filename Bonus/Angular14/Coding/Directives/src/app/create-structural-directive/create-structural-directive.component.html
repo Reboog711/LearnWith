@@ -1,0 +1,18 @@
+<h1>Role Switcher</h1>
+<input type="radio" name="user" (click)="selectUser(0)"> Admin<br>
+<input type="radio" name="user" (click)="selectUser(1)"> Author<br>
+<input type="radio" name="user" (click)="selectUser(2)"> Deleter<br>
+<input type="radio" name="user" (click)="selectUser(3)"> Editor<br>
+<input type="radio" name="user" (click)="selectUser(4)"> Author and Editor<br>
+<input type="radio" name="user" (click)="selectUser(5)"> Author and Deleter<br>
+<input type="radio" name="user" (click)="selectUser(6)"> Editor and Deleter<br>
+<h1>Menu</h1>
+<ul>
+  <li *appHasAccess="[ADMIN]">Admin Only Link</li>
+  <li *appHasAccess="[AUTHOR]">Author Only Link</li>
+  <li *appHasAccess="[DELETER]">Deleter Only Link</li>
+  <li *appHasAccess="[EDITOR]">Editor Only Link</li>
+  <li *appHasAccess="[AUTHOR, EDITOR]">Author and Editor Link</li>
+  <li *appHasAccess="[AUTHOR, DELETER]">Author and Deleter Link</li>
+  <li *appHasAccess="[EDITOR, DELETER]">Editor and Deleter Only Link</li>
+</ul>
